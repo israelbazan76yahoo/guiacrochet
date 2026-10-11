@@ -1,0 +1,10 @@
+# robots.txt para GuíaCrochet
+User-agent: *
+Allow: /
+
+# Bloquear carpetas privadas o de administración si las hubiera
+Disallow: /admin/
+Disallow: /private/
+
+# Enlace al sitemap oficial del sitio
+Sitemap: https://tu-dominio.com/sitemap.xml
