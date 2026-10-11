@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto | GuíaCrochet</title>
-  <meta name="description" content="Ponte en contacto con el equipo de GuíaCrochet para dudas, sugerencias, correcciones o consultas comerciales.">
+  <meta name="description" content="Página de contacto oficial de GuíaCrochet. Escríbenos para dudas, consultas o sugerencias sobre nuestros tutoriales de crochet y calculadora de lana.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tu-dominio.com/legales/contacto">
-
+  <link rel="canonical" href="https://tu-dominio.com/legales/contacto.html">
+  
   <style>
     :root {
       --primary-color: #7c3aed;
@@ -17,6 +17,7 @@
       --text-color: #1e293b;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
+      --header-height: 64px;
     }
 
     * {
@@ -27,185 +28,198 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--text-color);
       background-color: var(--bg-color);
-      padding-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
+    /* HEADER */
     header {
       background-color: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
+      height: var(--header-height);
     }
 
-    nav {
-      max-width: 800px;
+    .header-container {
+      max-width: 1100px;
+      height: 100%;
       margin: 0 auto;
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    nav strong a {
+    .brand {
       font-size: 1.25rem;
+      font-weight: 700;
       color: var(--primary-color);
       text-decoration: none;
     }
 
-    nav a {
+    .header-links a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.95rem;
     }
 
+    .header-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* CONTENIDO PRINCIPAL */
     main {
+      flex: 1;
       max-width: 800px;
-      margin: 2.5rem auto;
-      padding: 2rem;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      text-align: center;
     }
 
-    h1 {
-      font-size: 2rem;
-      color: #1e1b4b;
-      margin-bottom: 0.5rem;
+    .contact-card h1 {
+      color: #4c1d95;
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
     }
 
-    p {
-      margin-bottom: 1.5rem;
-      color: #334155;
+    .contact-intro {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
     }
 
-    .info-box {
+    .email-box {
       background-color: #f3e8ff;
-      border: 1px solid #e9d5ff;
-      padding: 1.25rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
+      border: 1px dashed #d8b4fe;
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: inline-block;
+      max-width: 100%;
     }
 
-    .info-box strong {
-      color: #5b21b6;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    label {
+    .email-box span {
+      display: block;
+      font-size: 0.88rem;
+      color: #6b21a8;
       font-weight: 600;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .email-link {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    .email-link:hover {
+      color: var(--primary-hover);
+    }
+
+    .info-section {
+      margin-top: 2.5rem;
+      text-align: left;
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+    }
+
+    .info-section h2 {
+      font-size: 1.2rem;
+      color: #1e1b4b;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-section p {
       font-size: 0.95rem;
-      color: #334155;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 1rem;
-      background-color: #fff;
-    }
-
-    input:focus, textarea:focus {
-      outline: 2px solid var(--primary-color);
-      border-color: transparent;
-    }
-
-    button {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 0.85rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      align-self: flex-start;
-    }
-
-    button:hover {
-      background-color: var(--primary-hover);
-    }
-
+    /* FOOTER */
     footer {
-      max-width: 800px;
+      max-width: 1100px;
+      width: 100%;
       margin: 2rem auto 0 auto;
+      padding: 1.5rem 1rem;
+      border-top: 1px solid var(--border-color);
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     footer a {
       color: var(--primary-color);
       text-decoration: none;
-      margin: 0 0.5rem;
+      margin: 0 0.4rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <nav>
-      <strong><a href="../index.html">GuíaCrochet</a></strong>
-      <a href="../index.html">← Volver al Inicio</a>
-    </nav>
+    <div class="header-container">
+      <a href="../index.html" class="brand">GuíaCrochet</a>
+      <div class="header-links">
+        <a href="../index.html">← Volver al Inicio</a>
+      </div>
+    </div>
   </header>
 
   <main>
-    <h1>Contacto</h1>
-    <p>¿Tienes alguna sugerencia, consulta sobre los puntos de crochet o consulta comercial? Ponte en contacto con nosotros completando el siguiente formulario o enviando un correo electrónico directo.</p>
+    <div class="contact-card">
+      <h1>Contacto</h1>
+      <p class="contact-intro">
+        ¿Tienes alguna sugerencia, consulta técnica o comentario sobre nuestros tutoriales y herramientas de crochet? Escríbenos directamente y te responderemos a la brevedad.
+      </p>
 
-    <div class="info-box">
-      <p style="margin: 0;"><strong>Correo electrónico directo:</strong> <code>contacto@tu-dominio.com</code></p>
-      <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #4c1d95;">Respondemos habitualmente en un plazo de 24 a 48 horas hábiles.</p>
+      <div class="email-box">
+        <span>Correo Electrónico Oficial</span>
+        <a href="mailto:contacto@tu-dominio.com?subject=Consulta%20desde%20GuiaCrochet" class="email-link">
+          contacto@tu-dominio.com
+        </a>
+      </div>
+
+      <div class="info-section">
+        <h2>Horarios de Atención y Respuestas</h2>
+        <p>
+          Revisamos la bandeja de entrada de lunes a viernes. Intentamos responder todas las consultas en un plazo de 24 a 48 horas hábiles.
+        </p>
+
+        <h2>Sugerencias de Tutoriales o Puntos</h2>
+        <p>
+          Si te gustaría que agreguemos algún punto específico o mejora en la calculadora de lana a nuestro catálogo, no dudes en hacérnoslo saber en tu mensaje.
+        </p>
+      </div>
     </div>
-
-    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias por contactarnos.');">
-      <div class="form-group">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-      </div>
-
-      <div class="form-group">
-        <label for="asunto">Asunto</label>
-        <input type="text" id="asunto" name="asunto" placeholder="Ej: Sugerencia de punto / Consulta" required>
-      </div>
-
-      <div class="form-group">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
-      </div>
-
-      <button type="submit">Enviar Mensaje</button>
-    </form>
   </main>
 
   <footer>
     <p>&copy; 2026 GuíaCrochet. Todos los derechos reservados.</p>
     <p>
-      <a href="../index.html">Inicio</a> | 
       <a href="privacidad.html">Política de Privacidad</a> | 
-      <a href="terminos.html">Términos de Uso</a>
+      <a href="terminos.html">Términos de Uso</a> | 
+      <a href="contacto.html">Contacto</a>
     </p>
   </footer>
 
