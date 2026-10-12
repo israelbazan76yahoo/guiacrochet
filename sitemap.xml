@@ -3,7 +3,7 @@
   
   <!-- Página Principal / Guía de Puntos -->
   <url>
-    <loc>https://tu-dominio.com/puntos-crochet</loc>
+    <loc>https://guiacrochet.com/puntos-crochet</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,21 +11,21 @@
 
   <!-- Páginas Legales / Cumplimiento AdSense -->
   <url>
-    <loc>https://tu-dominio.com/legales/privacidad.html</loc>
+    <loc>https://guiacrochet.com/legales/privacidad.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
-    <loc>https://tu-dominio.com/legales/terminos.html</loc>
+    <loc>https://guiacrochet.com/legales/terminos.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/legales/contacto.html</loc>
+    <loc>https://guiacrochet.com/legales/contacto.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
