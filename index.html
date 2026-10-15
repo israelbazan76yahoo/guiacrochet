@@ -281,6 +281,20 @@
       color: #334155;
     }
 
+    .stitch-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .stitch-card img:hover {
+      opacity: 0.9;
+    }
+
     /* COMPONENTE VISUAL / ESQUEMA SVG */
     .stitch-diagram {
       background: #faf5ff;
@@ -483,8 +497,8 @@
       }
     }
 
-    /* VENTANA MODAL PARA VIDEOS */
-    #video-modal {
+    /* VENTANAS MODALES (VIDEOS E IMÁGENES) */
+    #video-modal, #image-modal {
       display: none;
       position: fixed;
       top: 0;
@@ -535,6 +549,16 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+    .modal-img-container {
+      width: 100%;
+      text-align: center;
+    }
+    .modal-img-container img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
     }
     .btn-video {
       background: #f3e8ff;
@@ -674,16 +698,13 @@
       closeDropdown();
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
-        // Calculamos la altura combinada del header y la barra de pestañas fija
         const headerHeight = document.querySelector('header').offsetHeight;
         const tabsHeight = document.querySelector('.tabs-wrapper').offsetHeight;
-        const totalOffset = headerHeight + tabsHeight + 15; // 15px extra de respiro visual
+        const totalOffset = headerHeight + tabsHeight + 15;
 
-        // Obtenemos la posición de la sección respecto a la ventana y restamos el offset
         const elementPosition = targetSection.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
 
-        // Desplazamiento suave con la posición corregida exacta
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
@@ -718,12 +739,10 @@
 
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
-        // Obtenemos la altura exacta de los menús fijos superiores
         const headerHeight = document.querySelector('header').offsetHeight;
         const tabsHeight = document.querySelector('.tabs-wrapper').offsetHeight;
-        const totalOffset = headerHeight + tabsHeight + 15; // 15px de respiro visual
+        const totalOffset = headerHeight + tabsHeight + 15;
 
-        // Calculamos la posición exacta restando los menús fijos
         const elementPosition = targetSection.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
 
@@ -751,11 +770,11 @@
       document.getElementById('cookie-banner').style.display = 'none';
     }
 
+    // MODAL DE VIDEOS
     function abrirModalVideo(titulo, urlVideo) {
       document.getElementById('modal-titulo').textContent = `Tutorial: ${titulo}`;
       document.getElementById('modal-iframe').src = urlVideo;
 
-      // Convertimos el enlace de embed al formato estándar de YouTube para ver externamente
       let urlExterna = urlVideo;
       if (urlVideo.includes('/embed/')) {
         const videoId = urlVideo.split('/embed/')[1];
@@ -775,10 +794,34 @@
       document.getElementById('modal-iframe').src = '';
     }
 
+    // MODAL DE IMÁGENES AMPLIADAS
+    function abrirModalImagen(imgSrc, tituloPunto) {
+      document.getElementById('modal-img-titulo').textContent = `Muestra: ${tituloPunto}`;
+      document.getElementById('modal-img-element').src = imgSrc;
+      document.getElementById('image-modal').style.display = 'flex';
+    }
+
+    function cerrarModalImagen() {
+      document.getElementById('image-modal').style.display = 'none';
+      document.getElementById('modal-img-element').src = '';
+    }
+
+    // Cierre general de modales con clic fuera o tecla ESC
     window.addEventListener('click', function(event) {
-      const modal = document.getElementById('video-modal');
-      if (event.target === modal) {
+      const modalVideo = document.getElementById('video-modal');
+      const modalImage = document.getElementById('image-modal');
+      if (event.target === modalVideo) {
         cerrarModalVideo();
+      }
+      if (event.target === modalImage) {
+        cerrarModalImagen();
+      }
+    });
+
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        cerrarModalVideo();
+        cerrarModalImagen();
       }
     });
 
@@ -789,6 +832,7 @@
       }
     });
   </script>
+
   <!-- DATOS ESTRUCTURADOS JSON-LD PARA SEO (FAQ y Catálogo de Puntos) -->
   <script type="application/ld+json">
   {
@@ -840,31 +884,97 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Punto Cadeneta (cad)",
-            "url": "https://guiacrochet.com/puntos-crochet#puntos-basicos"
+            "url": "https://guiacrochet.com/#puntos-basicos"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Punto Enano / Deslizado (pe)",
-            "url": "https://guiacrochet.com/puntos-crochet#puntos-basicos"
+            "url": "https://guiacrochet.com/#puntos-basicos"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Punto Bajo / Medio Punto (pb)",
-            "url": "https://guiacrochet.com/puntos-crochet#puntos-basicos"
+            "url": "https://guiacrochet.com/#puntos-basicos"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "Medio Punto Alto / Media Vareta (mpa)",
-            "url": "https://guiacrochet.com/puntos-crochet#puntos-basicos"
+            "url": "https://guiacrochet.com/#puntos-basicos"
           },
           {
             "@type": "ListItem",
             "position": 5,
             "name": "Punto Alto / Vareta (pa)",
-            "url": "https://guiacrochet.com/puntos-crochet#puntos-basicos"
+            "url": "https://guiacrochet.com/#puntos-basicos"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Punto Red o Malla de Cadenetas",
+            "url": "https://guiacrochet.com/#puntos-calados-encajes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Punto Salomón / Nudo de Amor",
+            "url": "https://guiacrochet.com/#puntos-calados-encajes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Punto Abanico o Concha (Shell Stitch)",
+            "url": "https://guiacrochet.com/#puntos-calados-encajes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Punto V (V-Stitch)",
+            "url": "https://guiacrochet.com/#puntos-calados-encajes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "name": "Punto Alto en Relieve (Por Delante / Por Detrás)",
+            "url": "https://guiacrochet.com/#puntos-relieve-textura"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "name": "Punto Palomita / Pochoclo (Popcorn Stitch)",
+            "url": "https://guiacrochet.com/#puntos-relieve-textura"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "name": "Punto Waffle / Panal de Abeja",
+            "url": "https://guiacrochet.com/#puntos-relieve-textura"
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "name": "Punto Garbanzo / Puff Stitch",
+            "url": "https://guiacrochet.com/#puntos-relieve-textura"
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "name": "Punto Jazmín o Estrella (Jasmine Stitch)",
+            "url": "https://guiacrochet.com/#puntos-fantasia"
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "name": "Punto Espiga / Herringbone",
+            "url": "https://guiacrochet.com/#puntos-fantasia"
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "name": "Punto Chevron o Zig-Zag",
+            "url": "https://guiacrochet.com/#puntos-fantasia"
           }
         ]
       }
@@ -902,7 +1012,7 @@
           📖 Abreviaturas y Equivalencias
         </button>
         <button class="tab-btn" onclick="switchTab(event, 'simbolos-universales')">
-          📖 Simbolos Universales
+          📖 Símbolos Universales
         </button>
         <!-- DROPDOWN COMPACTO PARA LOS PUNTOS -->
         <div class="dropdown-container">
@@ -931,8 +1041,6 @@
       <h1>Diccionario y Guía Completa de Puntos de Crochet (A-Z)</h1>
       <p>Explora el catálogo exhaustivo de puntos de ganchillo: desde las técnicas básicas para principiantes hasta combinaciones de relieve, calados y puntos fantasía complejos. Incluye esquemas visuales estándar por símbolo.</p>
     </div>
-
-    
 
     <!-- TABLA DE ABREVIATURAS -->
     <section id="inicio">
@@ -1024,19 +1132,17 @@
         <article class="stitch-card">
           <span class="badge">Estructura Base</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Base / working loop guide -->
-        <path d="M15,45 Q35,15 65,45 Q95,75 125,45 Q140,30 145,25" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3,3"/>
-        <!-- Chains (ovals linked) -->
-        <ellipse cx="35" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(-15 35 35)"/>
-        <ellipse cx="65" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(15 65 35)"/>
-        <ellipse cx="95" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(-15 95 35)"/>
-        <ellipse cx="125" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(15 125 35)"/>
-        <!-- Hook indicator arrow -->
-        <path d="M140,15 L145,25 L135,28" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Eslabones de Cadeneta</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15,45 Q35,15 65,45 Q95,75 125,45 Q140,30 145,25" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3,3"/>
+              <ellipse cx="35" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(-15 35 35)"/>
+              <ellipse cx="65" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(15 65 35)"/>
+              <ellipse cx="95" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(-15 95 35)"/>
+              <ellipse cx="125" cy="35" rx="14" ry="9" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5" transform="rotate(15 125 35)"/>
+              <path d="M140,15 L145,25 L135,28" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Eslabones de Cadeneta</span>
+          </div>
+          <img src="assets/img/puntos/punto-cadeneta.png" alt="Ejemplo de tejido en Punto Cadeneta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Cadeneta (cad)')">
           <h3>Punto Cadeneta (cad)</h3>
           <p>Es la base sobre la que se teje prácticamente cualquier proyecto a crochet. Forma el cordón inicial de montado.</p>
           <ul><li><strong>Uso principal:</strong> Iniciar labores y arcos.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
@@ -1047,19 +1153,17 @@
         <article class="stitch-card">
           <span class="badge">Unión y Remate</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Base chain line -->
-        <path d="M15,45 Q50,45 145,45" fill="none" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Slip stitches passing through loops -->
-        <circle cx="40" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
-        <circle cx="70" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
-        <circle cx="100" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
-        <circle cx="130" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
-        <!-- Connecting flow line -->
-        <path d="M40,45 Q55,30 70,45 Q85,30 100,45 Q115,30 130,45" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="2,2"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Desplazamiento Superficial</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15,45 Q50,45 145,45" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+              <circle cx="40" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
+              <circle cx="70" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
+              <circle cx="100" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
+              <circle cx="130" cy="45" r="7" fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5"/>
+              <path d="M40,45 Q55,30 70,45 Q85,30 100,45 Q115,30 130,45" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="2,2"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Desplazamiento Superficial</span>
+          </div>
+          <img src="assets/img/puntos/punto-enano.png" alt="Ejemplo de tejido en Punto Enano / Deslizado" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Enano / Deslizado (pe)')">
           <h3>Punto Enano / Deslizado (pe)</h3>
           <p>Un punto invisible de mínima altura utilizado para unir vueltas en redondo o desplazar la aguja sin añadir volumen.</p>
           <ul><li><strong>Uso principal:</strong> Cierre de círculos y bordes.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
@@ -1070,19 +1174,19 @@
         <article class="stitch-card">
           <span class="badge">Tejido Tupido</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,50 L140,50" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Stitches (cross structure with height) -->
-        <g stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round">
-          <path d="M35,50 L35,25 M28,35 L42,35"/>
-          <path d="M65,50 L65,25 M58,35 L72,35"/>
-          <path d="M95,50 L95,25 M88,35 L102,35"/>
-          <path d="M125,50 L125,25 M118,35 L132,35"/>
-        </g>
-        <line x1="25" y1="20" x2="135" y2="20" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="2,2"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Inserción y Altura Baja</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,50 L140,50" stroke="#cbd5e1" stroke-width="2"/>
+              <g stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round">
+                <path d="M35,50 L35,25 M28,35 L42,35"/>
+                <path d="M65,50 L65,25 M58,35 L72,35"/>
+                <path d="M95,50 L95,25 M88,35 L102,35"/>
+                <path d="M125,50 L125,25 M118,35 L132,35"/>
+              </g>
+              <line x1="25" y1="20" x2="135" y2="20" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="2,2"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Inserción y Altura Baja</span>
+          </div>
+          <img src="assets/img/puntos/punto-bajo-medio-punto.png" alt="Ejemplo de tejido en Punto Bajo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Bajo / Medio Punto (pb)')">
           <h3>Punto Bajo / Medio Punto (pb)</h3>
           <p>Crea un tejido compacto, firme y resistente. Es la técnica por excelencia para la elaboración de juguetes amigurumi.</p>
           <ul><li><strong>Uso principal:</strong> Amigurumis y cestos.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
@@ -1093,18 +1197,18 @@
         <article class="stitch-card">
           <span class="badge">Altura Intermedia</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- T shapes with yarn-over loop representation -->
-        <g stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round">
-          <path d="M35,52 L35,18 M28,25 L42,25 M28,35 L42,35"/>
-          <path d="M65,52 L65,18 M58,25 L72,25 M58,35 L72,35"/>
-          <path d="M95,52 L95,18 M88,25 L102,25 M88,35 L102,35"/>
-          <path d="M125,52 L125,18 M118,25 L132,25 M118,35 L132,35"/>
-        </g>
-      </svg>
-      <span class="diagram-caption">Diagrama: Lazada y Altura Media (T)</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <g stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round">
+                <path d="M35,52 L35,18 M28,25 L42,25 M28,35 L42,35"/>
+                <path d="M65,52 L65,18 M58,25 L72,25 M58,35 L72,35"/>
+                <path d="M95,52 L95,18 M88,25 L102,25 M88,35 L102,35"/>
+                <path d="M125,52 L125,18 M118,25 L132,25 M118,35 L132,35"/>
+              </g>
+            </svg>
+            <span class="diagram-caption">Diagrama: Lazada y Altura Media (T)</span>
+          </div>
+          <img src="assets/img/puntos/punto-medio-punto-alto-media-vareta.png" alt="Ejemplo de tejido en Medio Punto Alto / Media Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Medio Punto Alto / Media Vareta (mpa)')">
           <h3>Medio Punto Alto / Media Vareta (mpa)</h3>
           <p>Ofrece un equilibrio idóneo entre densidad y flexibilidad, con una altura media entre el punto bajo y el alto.</p>
           <ul><li><strong>Uso principal:</strong> Gorros y jerséis.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
@@ -1115,18 +1219,18 @@
         <article class="stitch-card">
           <span class="badge">El Más Utilizado</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,55 L140,55" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Double bar tall stitches -->
-        <g stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round">
-          <path d="M35,55 L35,12 M27,20 L43,20 M27,32 L43,32"/>
-          <path d="M65,55 L65,12 M57,20 L73,20 M57,32 L73,32"/>
-          <path d="M95,55 L95,12 M87,20 L103,20 M87,32 L103,32"/>
-          <path d="M125,55 L125,12 M117,20 L133,20 M117,32 L133,32"/>
-        </g>
-      </svg>
-      <span class="diagram-caption">Diagrama: Postes Altos con Barra (𝚻)</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,55 L140,55" stroke="#cbd5e1" stroke-width="2"/>
+              <g stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round">
+                <path d="M35,55 L35,12 M27,20 L43,20 M27,32 L43,32"/>
+                <path d="M65,55 L65,12 M57,20 L73,20 M57,32 L73,32"/>
+                <path d="M95,55 L95,12 M87,20 L103,20 M87,32 L103,32"/>
+                <path d="M125,55 L125,12 M117,20 L133,20 M117,32 L133,32"/>
+              </g>
+            </svg>
+            <span class="diagram-caption">Diagrama: Postes Altos con Barra (𝚻)</span>
+          </div>
+          <img src="assets/img/puntos/punto-alto-vareta.png" alt="Ejemplo de tejido en Punto Alto / Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto / Vareta (pa)')">
           <h3>Punto Alto / Vareta (pa)</h3>
           <p>Tiene el doble de altura que el punto bajo. Permite tejer rápido creando telas suaves con buena caída.</p>
           <ul><li><strong>Uso principal:</strong> Mantas y bufandas.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
@@ -1143,15 +1247,15 @@
         <article class="stitch-card">
           <span class="badge">Estilo Malla</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15,50 L145,50" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Arches (Chains fixed with sc) -->
-        <path d="M25,50 Q45,15 65,50 Q85,15 105,50 Q125,15 145,50" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
-        <circle cx="65" cy="50" r="3.5" fill="#7c3aed"/>
-        <circle cx="105" cy="50" r="3.5" fill="#7c3aed"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Arcos y Malla de Cadenetas</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15,50 L145,50" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M25,50 Q45,15 65,50 Q85,15 105,50 Q125,15 145,50" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+              <circle cx="65" cy="50" r="3.5" fill="#7c3aed"/>
+              <circle cx="105" cy="50" r="3.5" fill="#7c3aed"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Arcos y Malla de Cadenetas</span>
+          </div>
+          <img src="assets/img/puntos/punto-red-malla-cadenetas.png" alt="Ejemplo de tejido en Punto Red o Malla de Cadenetas" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Red o Malla de Cadenetas')">
           <h3>Punto Red o Malla de Cadenetas</h3>
           <p>Formado por arcos de cadeneta fijados con puntos bajos. Genera un entramado flexible y muy aireado.</p>
           <ul><li><strong>Uso:</strong> Bolsas eco y redes de baño.</li></ul>
@@ -1162,15 +1266,15 @@
         <article class="stitch-card">
           <span class="badge">Técnica Especial</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Extended loops -->
-        <path d="M30,52 Q45,10 60,52 Q75,10 90,52 Q105,10 120,52" fill="none" stroke="#7c3aed" stroke-width="2.2"/>
-        <circle cx="60" cy="52" r="4" fill="#7c3aed"/>
-        <circle cx="90" cy="52" r="4" fill="#7c3aed"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Bucles Alargados de Nudo</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M30,52 Q45,10 60,52 Q75,10 90,52 Q105,10 120,52" fill="none" stroke="#7c3aed" stroke-width="2.2"/>
+              <circle cx="60" cy="52" r="4" fill="#7c3aed"/>
+              <circle cx="90" cy="52" r="4" fill="#7c3aed"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Bucles Alargados de Nudo</span>
+          </div>
+          <img src="assets/img/puntos/punto-salomon-nudo-de-amor.png" alt="Ejemplo de tejido en Punto Salomón / Nudo de Amor" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Salomón / Nudo de Amor')">
           <h3>Punto Salomón / Nudo de Amor</h3>
           <p>Formado por bucles alargados retenidos por un punto bajo. Produce un encaje ligero y etéreo con muy poco hilo.</p>
           <ul><li><strong>Uso:</strong> Chales elegantes de verano.</li></ul>
@@ -1181,17 +1285,17 @@
         <article class="stitch-card">
           <span class="badge">Motivo Clásico</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,55 L140,55" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Multiple stitches radiating from single base point -->
-        <g stroke="#7c3aed" stroke-width="2" stroke-linecap="round">
-          <path d="M80,55 L40,15 M80,55 L55,10 M80,55 L80,8 M80,55 L105,10 M80,55 L120,15"/>
-          <path d="M65,30 L95,30" stroke-width="1.5"/>
-        </g>
-        <circle cx="80" cy="55" r="4" fill="#5b21b6"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Varetas Convergentes (Abanico)</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,55 L140,55" stroke="#cbd5e1" stroke-width="2"/>
+              <g stroke="#7c3aed" stroke-width="2" stroke-linecap="round">
+                <path d="M80,55 L40,15 M80,55 L55,10 M80,55 L80,8 M80,55 L105,10 M80,55 L120,15"/>
+                <path d="M65,30 L95,30" stroke-width="1.5"/>
+              </g>
+              <circle cx="80" cy="55" r="4" fill="#5b21b6"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Varetas Convergentes (Abanico)</span>
+          </div>
+          <img src="assets/img/puntos/punto-abanico-concha.png" alt="Ejemplo de tejido en Punto Abanico o Concha" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Abanico o Concha (Shell Stitch)')">
           <h3>Punto Abanico o Concha (Shell Stitch)</h3>
           <p>Múltiples puntos altos tejidos en un mismo punto base que se abren formando ondas semicirculares.</p>
           <ul><li><strong>Uso:</strong> Bordes y colchas decorativas.</li></ul>
@@ -1202,19 +1306,18 @@
         <article class="stitch-card">
           <span class="badge">Geométrico</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- V pair: pa + cad + pa in same base -->
-        <path d="M40,52 L30,15 M23,22 L37,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="45" cy="32" r="3.5" fill="none" stroke="#7c3aed" stroke-width="2"/>
-        <path d="M50,52 L60,15 M53,22 L67,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
-
-        <path d="M100,52 L90,15 M83,22 L97,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="105" cy="32" r="3.5" fill="none" stroke="#7c3aed" stroke-width="2"/>
-        <path d="M110,52 L120,15 M113,22 L127,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Estructura 1pa + 1cad + 1pa</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M40,52 L30,15 M23,22 L37,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="45" cy="32" r="3.5" fill="none" stroke="#7c3aed" stroke-width="2"/>
+              <path d="M50,52 L60,15 M53,22 L67,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M100,52 L90,15 M83,22 L97,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="105" cy="32" r="3.5" fill="none" stroke="#7c3aed" stroke-width="2"/>
+              <path d="M110,52 L120,15 M113,22 L127,22" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Estructura 1pa + 1cad + 1pa</span>
+          </div>
+          <img src="assets/img/puntos/punto-v-stitch.png" alt="Ejemplo de tejido en Punto V (V-Stitch)" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto V (V-Stitch)')">
           <h3>Punto V (V-Stitch)</h3>
           <p>Estructura repetitiva de <code>1 pa + 1 cad + 1 pa</code> en el mismo espacio. Aporta dinamismo visual y avance veloz.</p>
           <ul><li><strong>Uso:</strong> Mantas de bebé ligeras.</li></ul>
@@ -1231,18 +1334,16 @@
         <article class="stitch-card">
           <span class="badge">Tridimensional</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Lower row reference -->
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Front post loop wrapping around base post -->
-        <path d="M50,52 L50,15 M43,22 L57,22" stroke="#cbd5e1" stroke-width="2"/>
-        <path d="M50,18 C65,28 65,42 50,48" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
-        
-        <path d="M110,52 L110,15 M103,22 L117,22" stroke="#cbd5e1" stroke-width="2"/>
-        <path d="M110,18 C125,28 125,42 110,48" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Envolvente Alrededor del Poste</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M50,52 L50,15 M43,22 L57,22" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M50,18 C65,28 65,42 50,48" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+              <path d="M110,52 L110,15 M103,22 L117,22" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M110,18 C125,28 125,42 110,48" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Envolvente Alrededor del Poste</span>
+          </div>
+          <img src="assets/img/puntos/punto-alto-en-relieve.png" alt="Ejemplo de tejido en Punto Alto en Relieve" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto en Relieve')">
           <h3>Punto Alto en Relieve (Por Delante / Por Detrás)</h3>
           <p>Se teje rodeando el poste del punto anterior en lugar de la hebra superior, creando lomos sobresalientes.</p>
           <ul><li><strong>Uso:</strong> Cuellos y puños elásticos.</li></ul>
@@ -1253,17 +1354,16 @@
         <article class="stitch-card">
           <span class="badge">Volumen Extra</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Popcorn 3D bulge -->
-        <circle cx="55" cy="32" r="16" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
-        <path d="M45,32 Q55,20 65,32 Q55,44 45,32" fill="#e9d5ff" stroke="#7c3aed" stroke-width="1.5"/>
-
-        <circle cx="115" cy="32" r="16" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
-        <path d="M105,32 Q115,20 125,32 Q115,44 105,32" fill="#e9d5ff" stroke="#7c3aed" stroke-width="1.5"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: 5 Varetas Unidas en Relieve 3D</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <circle cx="55" cy="32" r="16" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
+              <path d="M45,32 Q55,20 65,32 Q55,44 45,32" fill="#e9d5ff" stroke="#7c3aed" stroke-width="1.5"/>
+              <circle cx="115" cy="32" r="16" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
+              <path d="M105,32 Q115,20 125,32 Q115,44 105,32" fill="#e9d5ff" stroke="#7c3aed" stroke-width="1.5"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: 5 Varetas Unidas en Relieve 3D</span>
+          </div>
+          <img src="assets/img/puntos/punto-palomita-pochoclo.png" alt="Ejemplo de tejido en Punto Palomita / Pochoclo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Palomita / Pochoclo (Popcorn Stitch)')">
           <h3>Punto Palomita / Pochoclo (Popcorn Stitch)</h3>
           <p>Agrupación de 4 a 5 varetas en la misma base unidas por el primer y último punto para crear un relieve abultado.</p>
           <ul><li><strong>Uso:</strong> Cojines y mantas infantiles.</li></ul>
@@ -1274,16 +1374,15 @@
         <article class="stitch-card">
           <span class="badge">Estructura 3D</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Grid cells -->
-        <rect x="25" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
-        <rect x="65" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
-        <rect x="105" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
-        <!-- Interior recess lines -->
-        <path d="M33,23 L47,23 M33,37 L47,37 M73,23 L87,23 M73,37 L87,37 M113,23 L127,23 M113,37 L127,37" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Celdas Cuadradas Profundas</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
+              <rect x="65" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
+              <rect x="105" y="15" width="30" height="35" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.2"/>
+              <path d="M33,23 L47,23 M33,37 L47,37 M73,23 L87,23 M73,37 L87,37 M113,23 L127,23 M113,37 L127,37" stroke="#c4b5fd" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Celdas Cuadradas Profundas</span>
+          </div>
+          <img src="assets/img/puntos/punto-waffle.png" alt="Ejemplo de tejido en Punto Waffle / Panal de Abeja" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Waffle / Panal de Abeja')">
           <h3>Punto Waffle / Panal de Abeja</h3>
           <p>Combinación de varetas normales y varetas en relieve por delante que generan celdas cuadradas profundas.</p>
           <ul><li><strong>Uso:</strong> Paños de cocina y mantas térmicas.</li></ul>
@@ -1294,17 +1393,16 @@
         <article class="stitch-card">
           <span class="badge">Grosor denso</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Puff ovals stacked -->
-        <ellipse cx="55" cy="34" rx="14" ry="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
-        <ellipse cx="55" cy="30" rx="9" ry="6" fill="#e9d5ff" stroke="#a78bfa" stroke-width="1.5"/>
-
-        <ellipse cx="115" cy="34" rx="14" ry="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
-        <ellipse cx="115" cy="30" rx="9" ry="6" fill="#e9d5ff" stroke="#a78bfa" stroke-width="1.5"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Lazadas Retenidas Esponjosas</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <ellipse cx="55" cy="34" rx="14" ry="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
+              <ellipse cx="55" cy="30" rx="9" ry="6" fill="#e9d5ff" stroke="#a78bfa" stroke-width="1.5"/>
+              <ellipse cx="115" cy="34" rx="14" ry="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2.5"/>
+              <ellipse cx="115" cy="30" rx="9" ry="6" fill="#e9d5ff" stroke="#a78bfa" stroke-width="1.5"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Lazadas Retenidas Esponjosas</span>
+          </div>
+          <img src="assets/img/puntos/punto-garbanzo.png" alt="Ejemplo de tejido en Punto Garbanzo / Puff Stitch" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Garbanzo / Puff Stitch')">
           <h3>Punto Garbanzo / Puff Stitch</h3>
           <p>Múltiples lazadas retenidas en la aguja que se cierran juntas. Crea una textura suave y esponjosa.</p>
           <ul><li><strong>Uso:</strong> Gorros de invierno abrigados.</li></ul>
@@ -1321,16 +1419,16 @@
         <article class="stitch-card">
           <span class="badge">Diseño Floral</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Star flower structure -->
-        <circle cx="80" cy="32" r="7" fill="#5b21b6"/>
-        <ellipse cx="80" cy="14" rx="7" ry="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
-        <ellipse cx="80" cy="50" rx="7" ry="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
-        <ellipse cx="58" cy="32" rx="12" ry="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
-        <ellipse cx="102" cy="32" rx="12" ry="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Pétalos Estrellados 3D</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="32" r="7" fill="#5b21b6"/>
+              <ellipse cx="80" cy="14" rx="7" ry="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+              <ellipse cx="80" cy="50" rx="7" ry="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+              <ellipse cx="58" cy="32" rx="12" ry="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+              <ellipse cx="102" cy="32" rx="12" ry="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Pétalos Estrellados 3D</span>
+          </div>
+          <img src="assets/img/puntos/punto-jazmin.png" alt="Ejemplo de tejido en Punto Jazmín o Estrella" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Jazmín o Estrella (Jasmine Stitch)')">
           <h3>Punto Jazmín o Estrella (Jasmine Stitch)</h3>
           <p>Un entramado botánico tridimensional formado por pétalos de lazadas retenidas que convergen en un centro.</p>
           <ul><li><strong>Dificultad:</strong> Avanzado.</li><li><strong>Uso:</strong> Mantas de lujo y bolsos.</li></ul>
@@ -1341,15 +1439,15 @@
         <article class="stitch-card">
           <span class="badge">Geometría Inclinada</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
-        <!-- Herringbone diagonal crosses -->
-        <path d="M35,15 L55,45 M55,15 L35,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M75,15 L95,45 M95,15 L75,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M115,15 L135,45 M135,15 L115,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Entrecruce en Diagonal</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,52 L140,52" stroke="#cbd5e1" stroke-width="2"/>
+              <path d="M35,15 L55,45 M55,15 L35,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M75,15 L95,45 M95,15 L75,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M115,15 L135,45 M135,15 L115,45" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Entrecruce en Diagonal</span>
+          </div>
+          <img src="assets/img/puntos/punto-espiga.png" alt="Ejemplo de tejido en Punto Espiga / Herringbone" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Espiga / Herringbone')">
           <h3>Punto Espiga / Herringbone</h3>
           <p>Variación del medio punto alto con inclinación diagonal que imita el tejido en espina de pescado.</p>
           <ul><li><strong>Uso:</strong> Abrigos y alfombras firmes.</li></ul>
@@ -1360,13 +1458,13 @@
         <article class="stitch-card">
           <span class="badge">Ondulante</span>
           <div class="stitch-diagram detailed">
-      <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
-        <!-- Zig zag wave -->
-        <path d="M15,45 L45,18 L75,45 L105,18 L135,45 L145,35" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M15,30 L45,55 L75,30 L105,55 L135,30" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-dasharray="3,3"/>
-      </svg>
-      <span class="diagram-caption">Diagrama: Picos y Valles Simétricos</span>
-    </div>
+            <svg viewBox="0 0 160 65" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15,45 L45,18 L75,45 L105,18 L135,45 L145,35" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15,30 L45,55 L75,30 L105,55 L135,30" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-dasharray="3,3"/>
+            </svg>
+            <span class="diagram-caption">Diagrama: Picos y Valles Simétricos</span>
+          </div>
+          <img src="assets/img/puntos/punto-chevron-zig-zag.png" alt="Ejemplo de tejido en Punto Chevron o Zig-Zag" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Chevron o Zig-Zag')">
           <h3>Punto Chevron o Zig-Zag</h3>
           <p>Estructura en picos y valles lograda combinando aumentos y disminuciones continuas de forma simétrica.</p>
           <ul><li><strong>Uso:</strong> Mantas multicolores retro.</li></ul>
@@ -1511,23 +1609,35 @@
   </footer>
 
   <!-- VENTANA MODAL PARA VIDEOS -->
-    <div id="video-modal">
-      <div class="modal-content">
-        <button class="modal-close" onclick="cerrarModalVideo()">&times;</button>
-        <h3 id="modal-titulo" class="modal-title">Tutorial del Punto</h3>
-        
-        <div class="video-wrapper">
-          <iframe id="modal-iframe" src="" allowfullscreen></iframe>
-        </div>
+  <div id="video-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModalVideo()">&times;</button>
+      <h3 id="modal-titulo" class="modal-title">Tutorial del Punto</h3>
+      
+      <div class="video-wrapper">
+        <iframe id="modal-iframe" src="" allowfullscreen></iframe>
+      </div>
 
-        <!-- BOTÓN PARA ABRIR EN YOUTUBE -->
-        <div style="margin-top: 1rem; text-align: right;">
-          <a id="btn-youtube-externo" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #dc2626; font-size: 0.88rem; font-weight: 600; text-decoration: none; background: #fef2f2; border: 1px solid #fecaca; padding: 0.4rem 0.8rem; border-radius: 6px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            Ver directamente en YouTube ↗
-          </a>
-        </div>
+      <!-- BOTÓN PARA ABRIR EN YOUTUBE -->
+      <div style="margin-top: 1rem; text-align: right;">
+        <a id="btn-youtube-externo" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #dc2626; font-size: 0.88rem; font-weight: 600; text-decoration: none; background: #fef2f2; border: 1px solid #fecaca; padding: 0.4rem 0.8rem; border-radius: 6px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Ver directamente en YouTube ↗
+        </a>
       </div>
     </div>
+  </div>
+
+  <!-- VENTANA MODAL PARA IMÁGENES AMPLIADAS -->
+  <div id="image-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModalImagen()">&times;</button>
+      <h3 id="modal-img-titulo" class="modal-title">Muestra del Punto</h3>
+      <div class="modal-img-container">
+        <img id="modal-img-element" src="" alt="Muestra de tejido ampliada">
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
