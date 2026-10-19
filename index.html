@@ -244,18 +244,28 @@
       gap: 1.25rem;
     }
 
+    /* Modificamos la tarjeta para usar Flexbox en columna */
     .stitch-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1.25rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex; /* Se agrega Flexbox */
+      flex-direction: column; /* Organiza los elementos verticalmente */
+    }
+
+    /* Establecemos el orden de visualización de cada elemento interno */
+    .stitch-card .stitch-diagram,
+    .stitch-card img {
+      order: 1; /* Diagrama o imagen primero */
     }
 
     .stitch-card h3 {
       font-size: 1.1rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.25rem; /* Reducimos ligeramente el margen inferior */
       color: #1e1b4b;
+      order: 2; /* Título h3 en segundo lugar */
     }
 
     .badge {
@@ -267,18 +277,26 @@
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
       margin-bottom: 0.5rem;
+      order: 3; /* Badge se ubica inmediatamente debajo del h3 */
+      align-self: flex-start; /* Evita que el badge se estire a todo el ancho */
     }
 
     .stitch-card p {
       color: var(--text-muted);
       font-size: 0.9rem;
       margin-bottom: 0.75rem;
+      order: 4; /* Párrafo descriptivo */
     }
 
     .stitch-card ul {
       padding-left: 1.1rem;
       font-size: 0.85rem;
       color: #334155;
+      order: 5; /* Lista de usos/dificultad */
+    }
+
+    .stitch-card .btn-video {
+      order: 6; /* Botón de video al final */
     }
 
     .stitch-card img {
@@ -909,72 +927,6 @@
             "position": 5,
             "name": "Punto Alto / Vareta (pa)",
             "url": "https://guiacrochet.com/#puntos-basicos"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
-            "name": "Punto Red o Malla de Cadenetas",
-            "url": "https://guiacrochet.com/#puntos-calados-encajes"
-          },
-          {
-            "@type": "ListItem",
-            "position": 7,
-            "name": "Punto Salomón / Nudo de Amor",
-            "url": "https://guiacrochet.com/#puntos-calados-encajes"
-          },
-          {
-            "@type": "ListItem",
-            "position": 8,
-            "name": "Punto Abanico o Concha (Shell Stitch)",
-            "url": "https://guiacrochet.com/#puntos-calados-encajes"
-          },
-          {
-            "@type": "ListItem",
-            "position": 9,
-            "name": "Punto V (V-Stitch)",
-            "url": "https://guiacrochet.com/#puntos-calados-encajes"
-          },
-          {
-            "@type": "ListItem",
-            "position": 10,
-            "name": "Punto Alto en Relieve (Por Delante / Por Detrás)",
-            "url": "https://guiacrochet.com/#puntos-relieve-textura"
-          },
-          {
-            "@type": "ListItem",
-            "position": 11,
-            "name": "Punto Palomita / Pochoclo (Popcorn Stitch)",
-            "url": "https://guiacrochet.com/#puntos-relieve-textura"
-          },
-          {
-            "@type": "ListItem",
-            "position": 12,
-            "name": "Punto Waffle / Panal de Abeja",
-            "url": "https://guiacrochet.com/#puntos-relieve-textura"
-          },
-          {
-            "@type": "ListItem",
-            "position": 13,
-            "name": "Punto Garbanzo / Puff Stitch",
-            "url": "https://guiacrochet.com/#puntos-relieve-textura"
-          },
-          {
-            "@type": "ListItem",
-            "position": 14,
-            "name": "Punto Jazmín o Estrella (Jasmine Stitch)",
-            "url": "https://guiacrochet.com/#puntos-fantasia"
-          },
-          {
-            "@type": "ListItem",
-            "position": 15,
-            "name": "Punto Espiga / Herringbone",
-            "url": "https://guiacrochet.com/#puntos-fantasia"
-          },
-          {
-            "@type": "ListItem",
-            "position": 16,
-            "name": "Punto Chevron o Zig-Zag",
-            "url": "https://guiacrochet.com/#puntos-fantasia"
           }
         ]
       }
