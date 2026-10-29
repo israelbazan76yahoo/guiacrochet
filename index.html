@@ -7,10 +7,13 @@
   <meta name="description" content="Guía exhaustiva y diccionario de puntos de crochet: básicos, calados, de relieve y fantasía. Incluye abreviaturas en español e inglés (US/UK) y símbolos de gráficos.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://guiacrochet.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800113345128144"
      crossorigin="anonymous"></script>
-  
+
   <style>
     :root {
       --primary-color: #7c3aed;
@@ -63,10 +66,22 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Nunito', system-ui, sans-serif;
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -0.025em;
       color: var(--primary-color);
       text-decoration: none;
+    }
+
+    .brand-yarn-icon {
+      width: 1.1em;
+      height: 1.1em;
+      color: #b7793e;
+      flex: none;
     }
 
     .header-links a {
@@ -104,6 +119,22 @@
       gap: 0.5rem;
       flex-wrap: wrap; /* Permite que los botones bajen de línea si no entran */
       padding-bottom: 0.25rem;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--card-bg);
+      color: var(--text-color);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     .tab-btn {
@@ -177,22 +208,125 @@
 
     /* HERO SECTION */
     .hero {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
-      padding: 2rem 1.5rem;
-      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
       margin-bottom: 2rem;
+      padding: 4rem 1rem 3rem;
+      background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
 
     .hero h1 {
-      font-size: 1.8rem;
-      color: #4c1d95;
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
+      color: #111827;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
     }
 
-    .hero p {
+    .hero-title-accent {
+      color: #d97706;
+    }
+
+    .hero-description {
+      max-width: 42rem;
+      margin: 1.5rem auto 0;
+      color: #4b5563;
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+      line-height: 1.625;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.5rem;
+      border: 1px solid transparent;
+      border-radius: 0.75rem;
       font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-action-primary {
+      background: #d97706;
+      color: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-action-primary:hover {
+      background: #f59e0b;
+    }
+
+    .hero-action-secondary {
+      border-color: #d1d5db;
+      background: #ffffff;
       color: #374151;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-action-secondary:hover {
+      background: #f9fafb;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .hero-stat-value {
+      color: #111827;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-stat-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .hero-stat-wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      .hero-eyebrow {
+        display: none;
+      }
     }
 
     /* TABLAS RESPONSIVAS */
@@ -231,6 +365,36 @@
     /* GRID SECCIONES Y TARJETAS */
     section {
       margin-bottom: 2.5rem;
+    }
+
+    .blog-article {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .blog-article + .blog-article {
+      margin-top: 1.25rem;
+    }
+
+    .blog-article h3 {
+      font-size: 1.1rem;
+      color: #1e1b4b;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .blog-article p,
+    .blog-article li {
+      color: #334155;
+    }
+
+    .blog-article ul {
+      margin: 0.5rem 0 0 1.25rem;
+    }
+
+    .blog-article li {
+      margin-bottom: 0.5rem;
     }
 
     h2 {
@@ -284,6 +448,32 @@
       align-self: flex-start; /* Evita que el badge se estire a todo el ancho */
     }
 
+    .difficulty-badge {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.5;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .difficulty-beginner {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .difficulty-intermediate {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .difficulty-advanced {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
     .stitch-card p {
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -296,6 +486,15 @@
       font-size: 0.85rem;
       color: #334155;
       order: 5; /* Lista de usos/dificultad */
+    }
+
+    .stitch-card ul ol {
+      margin: 0.35rem 0 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .stitch-card ul ol li {
+      margin-bottom: 0.25rem;
     }
 
     .stitch-card .btn-video {
@@ -365,6 +564,293 @@
       color: #64748b;
       font-size: 0.92rem;
       margin-bottom: 1.25rem;
+    }
+
+    .yarn-estimates {
+      margin: -1.25rem 0 2.5rem;
+    }
+
+    .yarn-estimates summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      background: #fffbeb;
+      color: #92400e;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .yarn-estimates summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .yarn-estimates summary:hover {
+      border-color: #f59e0b;
+      background: #fef3c7;
+    }
+
+    .yarn-estimates summary::after {
+      content: "+";
+      display: inline-flex;
+      flex: none;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .yarn-estimates[open] summary::after {
+      content: "−";
+    }
+
+    .yarn-estimates summary:focus-visible {
+      outline: 3px solid #d97706;
+      outline-offset: 3px;
+    }
+
+    .yarn-estimates-content {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    .yarn-estimates-content p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      .abbreviations-table {
+        overflow-x: hidden;
+      }
+
+      .abbreviations-table table,
+      .abbreviations-table tbody {
+        display: block;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .abbreviations-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .abbreviations-table tr {
+        display: block;
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .abbreviations-table tr:last-child {
+        border-bottom: 0;
+      }
+
+      .abbreviations-table td {
+        display: grid;
+        grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.45rem 0.65rem;
+        border-bottom: 0;
+        font-size: 0.82rem;
+        overflow-wrap: anywhere;
+      }
+
+      .abbreviations-table td::before {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .abbreviations-table td:nth-child(1)::before {
+        content: "Nombre del punto";
+      }
+
+      .abbreviations-table td:nth-child(2)::before {
+        content: "Abreviatura (ES)";
+      }
+
+      .abbreviations-table td:nth-child(3)::before {
+        content: "Término EE.UU. (US)";
+      }
+
+      .abbreviations-table td:nth-child(4)::before {
+        content: "Término Reino Unido (UK)";
+      }
+    }
+
+    .universal-symbols-table {
+      overflow-x: hidden;
+    }
+
+    .universal-symbols-table table,
+    .universal-symbols-table tbody {
+      width: 100%;
+    }
+
+    @media (min-width: 481px) {
+      .universal-symbols-table th:first-child,
+      .universal-symbols-table td:first-child {
+        width: 16%;
+        text-align: center;
+      }
+
+      .universal-symbols-table th:nth-child(2),
+      .universal-symbols-table td:nth-child(2) {
+        width: 24%;
+      }
+
+      .universal-symbols-table th:nth-child(3),
+      .universal-symbols-table td:nth-child(3) {
+        width: 22%;
+      }
+
+      .universal-symbols-table th:last-child,
+      .universal-symbols-table td:last-child {
+        width: 38%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .universal-symbols-table table,
+      .universal-symbols-table tbody {
+        display: block;
+        min-width: 0;
+      }
+
+      .universal-symbols-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .universal-symbols-table tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.75rem;
+        padding: 0.65rem 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--card-bg);
+      }
+
+      .universal-symbols-table tr:last-child {
+        margin-bottom: 0;
+      }
+
+      .universal-symbols-table tr:hover {
+        background: var(--card-bg);
+      }
+
+      .universal-symbols-table td {
+        display: grid;
+        grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+        align-items: start;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0.65rem 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.82rem;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
+
+      .universal-symbols-table td:last-child {
+        border-bottom: 0;
+      }
+
+      .universal-symbols-table td::before {
+        display: block;
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .universal-symbols-table td:nth-child(1)::before {
+        content: "Símbolo gráfico";
+      }
+
+      .universal-symbols-table td:nth-child(2)::before {
+        content: "Nombre del punto";
+      }
+
+      .universal-symbols-table td:nth-child(3)::before {
+        content: "Abreviatura (ES / US)";
+      }
+
+      .universal-symbols-table td:nth-child(4)::before {
+        content: "Descripción";
+      }
+
+      .universal-symbols-table td:first-child {
+        text-align: left;
+      }
+
+      .universal-symbols-table td:first-child span {
+        display: inline-block;
+        padding-left: 0.15rem;
+      }
+    }
+
+    .yarn-estimates .table-container {
+      overflow-x: visible;
+    }
+
+    .yarn-estimates table {
+      min-width: 0;
+      table-layout: fixed;
+    }
+
+    .yarn-estimates th:first-child,
+    .yarn-estimates td:first-child {
+      width: 62%;
+      overflow-wrap: anywhere;
+    }
+
+    .yarn-estimates th:last-child,
+    .yarn-estimates td:last-child {
+      width: 38%;
+    }
+
+    @media (max-width: 480px) {
+      .yarn-estimates-content {
+        padding: 0.65rem;
+      }
+
+      .yarn-estimates th,
+      .yarn-estimates td {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.8rem;
+      }
     }
 
     .calc-grid {
@@ -501,12 +987,6 @@
     }
 
     @media (max-width: 768px) {
-      .hero {
-        padding: 1.5rem 1rem;
-      }
-      .hero h1 {
-        font-size: 1.4rem;
-      }
       .calc-grid {
         grid-template-columns: 1fr;
       }
@@ -515,6 +995,68 @@
       }
       h2 {
         font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tabs-wrapper {
+        padding: 0.5rem 0;
+        margin-bottom: 1rem;
+      }
+
+      .mobile-nav-toggle {
+        display: inline-flex;
+      }
+
+      .tabs-navigation {
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        padding: 0.25rem 0 0;
+      }
+
+      .tabs-navigation.is-open {
+        display: flex;
+      }
+
+      .tabs-navigation > .tab-btn,
+      .tabs-navigation > .dropdown-container,
+      .tabs-navigation > .dropdown-container > .tab-btn {
+        width: 100%;
+      }
+
+      .tabs-navigation > .tab-btn,
+      .tabs-navigation > .dropdown-container > .tab-btn {
+        justify-content: flex-start;
+        border-radius: 10px;
+        text-align: left;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 0.35rem;
+        box-shadow: none;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .hero {
+        padding: 6rem 1.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: row;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-stat-wide {
+        grid-column: auto;
       }
     }
 
@@ -717,6 +1259,7 @@
     function scrollASeccion(event, targetId) {
       if (event) event.preventDefault();
       closeDropdown();
+      closeMobileNavigation();
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         const headerHeight = document.querySelector('header').offsetHeight;
@@ -747,6 +1290,29 @@
       dropdown.classList.toggle('show');
     }
 
+    function toggleMobileNavigation(event) {
+      if (event) event.stopPropagation();
+      const navigation = document.getElementById('tabs-navigation');
+      const toggle = document.getElementById('mobile-nav-toggle');
+      if (!navigation || !toggle) return;
+
+      const isOpen = navigation.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.querySelector('.mobile-nav-toggle-icon').textContent = isOpen ? '−' : '+';
+    }
+
+    function closeMobileNavigation() {
+      const navigation = document.getElementById('tabs-navigation');
+      const toggle = document.getElementById('mobile-nav-toggle');
+      if (!navigation || !toggle) return;
+
+      const restoreFocus = navigation.classList.contains('is-open') && navigation.contains(document.activeElement);
+      navigation.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.querySelector('.mobile-nav-toggle-icon').textContent = '+';
+      if (restoreFocus) toggle.focus();
+    }
+
     function closeDropdown() {
       const dropdown = document.getElementById('puntos-dropdown-menu');
       if (dropdown) dropdown.classList.remove('show');
@@ -757,6 +1323,7 @@
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById('puntos-tab-btn').classList.add('active');
       closeDropdown();
+      closeMobileNavigation();
 
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
@@ -777,6 +1344,9 @@
     window.onclick = function(event) {
       if (!event.target.matches('.dropdown-toggle') && !event.target.matches('.tab-btn')) {
         closeDropdown();
+      }
+      if (!event.target.closest('.tabs-wrapper')) {
+        closeMobileNavigation();
       }
     };
 
@@ -843,6 +1413,8 @@
       if (event.key === 'Escape') {
         cerrarModalVideo();
         cerrarModalImagen();
+        closeDropdown();
+        closeMobileNavigation();
       }
     });
 
@@ -952,7 +1524,13 @@
 
   <header>
     <div class="header-container">
-      <a href="#" class="brand">GuiaCrochet</a>
+      <a href="#" class="brand">
+        GuiaCrochet
+        <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+        </svg>
+      </a>
       <div class="header-links">
         <a href="legales/contacto.html">Contacto</a>
       </div>
@@ -961,9 +1539,13 @@
 
   <main>
     <div class="tabs-wrapper">
-      <nav class="tabs-navigation" aria-label="Navegación por categorías">
-        
-        <button class="tab-btn active" onclick="switchTab(event, 'inicio')">
+      <button id="mobile-nav-toggle" class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="tabs-navigation" onclick="toggleMobileNavigation(event)">
+        <span>Menú de navegación</span>
+        <span class="mobile-nav-toggle-icon" aria-hidden="true">+</span>
+      </button>
+      <nav id="tabs-navigation" class="tabs-navigation" aria-label="Navegación por categorías">
+
+        <button class="tab-btn" onclick="switchTab(event, 'inicio')">
           📖 Abreviaturas y Equivalencias
         </button>
         <button class="tab-btn" onclick="switchTab(event, 'simbolos-universales')">
@@ -981,9 +1563,13 @@
             <button class="dropdown-item" onclick="selectPuntoOption(event, 'puntos-fantasia')">4. Puntos Fantasía</button>
           </div>
         </div>
-        
+
         <button class="tab-btn" onclick="switchTab(event, 'calculadora-lana')">
           🧮 Calculadora de Lana
+        </button>
+
+        <button class="tab-btn" onclick="switchTab(event, 'blog')">
+          📝 Blog
         </button>
 
         <button class="tab-btn" onclick="switchTab(event, 'faq')">
@@ -992,23 +1578,54 @@
       </nav>
     </div>
 
-    <div class="hero">
-      <h1>Diccionario y Guía Completa de Puntos de Crochet (A-Z)</h1>
-      <p>Explora el catálogo exhaustivo de puntos de ganchillo: desde las técnicas básicas para principiantes hasta combinaciones de relieve, calados y puntos fantasía complejos. Incluye esquemas visuales estándar por símbolo.</p>
-    </div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-container">
+        <span class="hero-eyebrow">✨ Tu diccionario y guía completa de crochet (A-Z)</span>
+
+        <h1 id="hero-title">Domina el arte del <span class="hero-title-accent">crochet</span> con confianza</h1>
+
+        <p class="hero-description">
+          Explora un catálogo exhaustivo de puntos de ganchillo, esquemas visuales estándar por símbolo y herramientas diseñadas para calcular el material exacto de tus proyectos.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#puntos-basicos" class="hero-action hero-action-primary" onclick="scrollASeccion(event, 'puntos-basicos')">
+            🧶 Explorar Catálogo de Puntos
+          </a>
+          <a href="#calculadora-lana" class="hero-action hero-action-secondary" onclick="scrollASeccion(event, 'calculadora-lana')">
+            🧮 Calcular Lana y Equivalencias
+          </a>
+        </div>
+
+        <div class="hero-stats" aria-label="Beneficios de la guía">
+          <div>
+            <p class="hero-stat-value">16</p>
+            <p class="hero-stat-label">Puntos explicados</p>
+          </div>
+          <div>
+            <p class="hero-stat-value">100%</p>
+            <p class="hero-stat-label">Gratuito y práctico</p>
+          </div>
+          <div class="hero-stat-wide">
+            <p class="hero-stat-value">A - Z</p>
+            <p class="hero-stat-label">Guía de abreviaturas</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- TABLA DE ABREVIATURAS -->
     <section id="inicio">
       <h2>Abreviaturas y Equivalencias de Puntos Básicos</h2>
       <p>Consulta la correspondencia de términos entre español y las nomenclaturas estándar:</p>
-      <div class="table-container">
+      <div class="table-container abbreviations-table">
         <table>
           <thead>
             <tr>
-              <th>Nombre del Punto</th>
-              <th>Abreviatura (ES)</th>
-              <th>Término EE.UU. (US)</th>
-              <th>Término Reino Unido (UK)</th>
+              <th scope="col">Nombre del Punto</th>
+              <th scope="col">Abreviatura (ES)</th>
+              <th scope="col">Término EE.UU. (US)</th>
+              <th scope="col">Término Reino Unido (UK)</th>
             </tr>
           </thead>
           <tbody>
@@ -1026,15 +1643,15 @@
     <section id="simbolos-universales">
       <h2>Símbolos Universales en Gráficos de Crochet</h2>
       <p>Antes de leer patrones o diagramas en esquema, es fundamental conocer los símbolos estandarizados a nivel internacional que representan cada punto:</p>
-      
-      <div class="table-container">
+
+      <div class="table-container universal-symbols-table">
         <table>
           <thead>
             <tr>
-              <th>Símbolo Gráfico</th>
-              <th>Nombre del Punto</th>
-              <th>Abreviatura (ES / US)</th>
-              <th>Descripción del Símbolo</th>
+              <th scope="col">Símbolo Gráfico</th>
+              <th scope="col">Nombre del Punto</th>
+              <th scope="col">Abreviatura (ES / US)</th>
+              <th scope="col">Descripción del Símbolo</th>
             </tr>
           </thead>
           <tbody>
@@ -1100,7 +1717,17 @@
           <img src="assets/img/puntos/punto-cadeneta.png" alt="Ejemplo de tejido en Punto Cadeneta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Cadeneta (cad)')">
           <h3>Punto Cadeneta (cad)</h3>
           <p>Es la base sobre la que se teje prácticamente cualquier proyecto a crochet. Forma el cordón inicial de montado.</p>
-          <ul><li><strong>Uso principal:</strong> Iniciar labores y arcos.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Iniciar labores y formar arcos.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz un nudo corredizo y deja el bucle en el ganchillo.</li>
+                <li>Pasa la hebra sobre el ganchillo y tira de ella a través del bucle.</li>
+                <li>Repite el movimiento, manteniendo los eslabones parejos y sin apretar.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Cadeneta', 'https://www.youtube.com/embed/oVTkK0l2ocw')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1121,7 +1748,17 @@
           <img src="assets/img/puntos/punto-enano.png" alt="Ejemplo de tejido en Punto Enano / Deslizado" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Enano / Deslizado (pe)')">
           <h3>Punto Enano / Deslizado (pe)</h3>
           <p>Un punto invisible de mínima altura utilizado para unir vueltas en redondo o desplazar la aguja sin añadir volumen.</p>
-          <ul><li><strong>Uso principal:</strong> Cierre de círculos y bordes.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Cerrar vueltas, unir piezas y rematar bordes.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Introduce el ganchillo en el punto indicado.</li>
+                <li>Toma la hebra y pásala a través del punto y del bucle que ya está en el ganchillo.</li>
+                <li>Continúa en el siguiente punto o repite para cerrar la vuelta.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Enano / Deslizado', 'https://www.youtube.com/embed/kN5jKHpuqsY')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1144,7 +1781,17 @@
           <img src="assets/img/puntos/punto-bajo-medio-punto.png" alt="Ejemplo de tejido en Punto Bajo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Bajo / Medio Punto (pb)')">
           <h3>Punto Bajo / Medio Punto (pb)</h3>
           <p>Crea un tejido compacto, firme y resistente. Es la técnica por excelencia para la elaboración de juguetes amigurumi.</p>
-          <ul><li><strong>Uso principal:</strong> Amigurumis y cestos.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Amigurumis, cestos y tejidos compactos.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Introduce el ganchillo en el punto y toma la hebra para sacar un bucle.</li>
+                <li>Toma la hebra nuevamente y pásala por los dos bucles del ganchillo.</li>
+                <li>Repite en cada punto de la vuelta o hilera.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Bajo / Medio Punto', 'https://www.youtube.com/embed/KHxUbnyuavg')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1166,7 +1813,17 @@
           <img src="assets/img/puntos/punto-medio-punto-alto-media-vareta.png" alt="Ejemplo de tejido en Medio Punto Alto / Media Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Medio Punto Alto / Media Vareta (mpa)')">
           <h3>Medio Punto Alto / Media Vareta (mpa)</h3>
           <p>Ofrece un equilibrio idóneo entre densidad y flexibilidad, con una altura media entre el punto bajo y el alto.</p>
-          <ul><li><strong>Uso principal:</strong> Gorros y jerséis.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Gorros, jerséis y prendas de grosor intermedio.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada e introduce el ganchillo en el punto.</li>
+                <li>Toma la hebra y pásala por el punto; quedarán tres bucles en el ganchillo.</li>
+                <li>Toma la hebra otra vez y pásala por los tres bucles de una sola vez.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Medio Punto Alto / Media Vareta', 'https://www.youtube.com/embed/nXtWMlcEhFY')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1188,7 +1845,17 @@
           <img src="assets/img/puntos/punto-alto-vareta.png" alt="Ejemplo de tejido en Punto Alto / Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto / Vareta (pa)')">
           <h3>Punto Alto / Vareta (pa)</h3>
           <p>Tiene el doble de altura que el punto bajo. Permite tejer rápido creando telas suaves con buena caída.</p>
-          <ul><li><strong>Uso principal:</strong> Mantas y bufandas.</li><li><strong>Dificultad:</strong> Principiante.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Mantas, bufandas y prendas con buena caída.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada e introduce el ganchillo en el punto.</li>
+                <li>Toma la hebra y pásala por el punto; quedan tres bucles en el ganchillo.</li>
+                <li>Toma la hebra y pásala por los dos primeros bucles; vuelve a tomarla y pásala por los dos restantes.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Alto / Vareta', 'https://www.youtube.com/embed/INrguUX5sng')">▶ Ver Video Explicativo</button>
         </article>
       </div>
@@ -1213,7 +1880,17 @@
           <img src="assets/img/puntos/punto-red-malla-cadenetas.png" alt="Ejemplo de tejido en Punto Red o Malla de Cadenetas" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Red o Malla de Cadenetas')">
           <h3>Punto Red o Malla de Cadenetas</h3>
           <p>Formado por arcos de cadeneta fijados con puntos bajos. Genera un entramado flexible y muy aireado.</p>
-          <ul><li><strong>Uso:</strong> Bolsas eco y redes de baño.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Bolsas reutilizables, redes y tejidos calados.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Teje una base de cadenetas y fija el primer arco con un punto bajo.</li>
+                <li>Haz varias cadenetas para formar el arco y fija su extremo con un punto bajo, saltando los puntos que indique el patrón.</li>
+                <li>Repite la secuencia; en las siguientes hileras trabaja los puntos bajos dentro de los arcos anteriores.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Red o Malla de Cadenetas', 'https://www.youtube.com/embed/A4i1SZid_3Q')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1232,7 +1909,17 @@
           <img src="assets/img/puntos/punto-salomon-nudo-de-amor.png" alt="Ejemplo de tejido en Punto Salomón / Nudo de Amor" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Salomón / Nudo de Amor')">
           <h3>Punto Salomón / Nudo de Amor</h3>
           <p>Formado por bucles alargados retenidos por un punto bajo. Produce un encaje ligero y etéreo con muy poco hilo.</p>
-          <ul><li><strong>Uso:</strong> Chales elegantes de verano.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Chales y prendas ligeras de verano.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; requiere controlar el tamaño de los bucles.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Forma un bucle alargado y pásalo por el ganchillo.</li>
+                <li>Toma la hebra y pásala por el bucle para formar el nudo.</li>
+                <li>Inserta el ganchillo en la hebra lateral del nudo, haz un punto bajo y repite formando bucles del mismo tamaño.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Salomón / Nudo de Amor', 'https://www.youtube.com/embed/uRD3x71izzU')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1253,7 +1940,17 @@
           <img src="assets/img/puntos/punto-abanico-concha.png" alt="Ejemplo de tejido en Punto Abanico o Concha" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Abanico o Concha (Shell Stitch)')">
           <h3>Punto Abanico o Concha (Shell Stitch)</h3>
           <p>Múltiples puntos altos tejidos en un mismo punto base que se abren formando ondas semicirculares.</p>
-          <ul><li><strong>Uso:</strong> Bordes y colchas decorativas.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Bordes, mantas y colchas decorativas.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span> a <span class="difficulty-badge difficulty-intermediate">intermedio</span>; conviene reconocer los espacios del patrón.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada e introduce el ganchillo en el espacio indicado.</li>
+                <li>Teje varios puntos altos en ese mismo espacio para formar el abanico.</li>
+                <li>Salta los puntos o espacios indicados y repite el grupo para crear la siguiente concha.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Abanico o Concha', 'https://www.youtube.com/embed/JW7x802565w')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1275,7 +1972,17 @@
           <img src="assets/img/puntos/punto-v-stitch.png" alt="Ejemplo de tejido en Punto V (V-Stitch)" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto V (V-Stitch)')">
           <h3>Punto V (V-Stitch)</h3>
           <p>Estructura repetitiva de <code>1 pa + 1 cad + 1 pa</code> en el mismo espacio. Aporta dinamismo visual y avance veloz.</p>
-          <ul><li><strong>Uso:</strong> Mantas de bebé ligeras.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Mantas ligeras, prendas y tejidos calados.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-beginner">Principiante</span></li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada e inserta el ganchillo en el punto o espacio indicado.</li>
+                <li>Teje un punto alto, una cadeneta y otro punto alto en el mismo lugar.</li>
+                <li>Repite el grupo en cada espacio correspondiente y trabaja la siguiente hilera dentro de las cadenetas de las “V” anteriores.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto V', 'https://www.youtube.com/embed/V6b5B0fMt3M')">▶ Ver Video Explicativo</button>
         </article>
       </div>
@@ -1301,7 +2008,17 @@
           <img src="assets/img/puntos/punto-alto-en-relieve.png" alt="Ejemplo de tejido en Punto Alto en Relieve" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto en Relieve')">
           <h3>Punto Alto en Relieve (Por Delante / Por Detrás)</h3>
           <p>Se teje rodeando el poste del punto anterior en lugar de la hebra superior, creando lomos sobresalientes.</p>
-          <ul><li><strong>Uso:</strong> Cuellos y puños elásticos.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Cuellos, puños y tejidos con relieve.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; hay que distinguir el frente y el revés del poste.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada y localiza el poste del punto alto de la hilera anterior.</li>
+                <li>Para el relieve por delante, pasa el ganchillo alrededor del poste desde el frente; para el relieve por detrás, pásalo desde atrás.</li>
+                <li>Toma la hebra y completa el punto alto como de costumbre.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Alto en Relieve', 'https://www.youtube.com/embed/OrpO8tyzDr4')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1321,7 +2038,17 @@
           <img src="assets/img/puntos/punto-palomita-pochoclo.png" alt="Ejemplo de tejido en Punto Palomita / Pochoclo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Palomita / Pochoclo (Popcorn Stitch)')">
           <h3>Punto Palomita / Pochoclo (Popcorn Stitch)</h3>
           <p>Agrupación de 4 a 5 varetas en la misma base unidas por el primer y último punto para crear un relieve abultado.</p>
-          <ul><li><strong>Uso:</strong> Cojines y mantas infantiles.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Cojines, mantas y detalles con volumen.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; requiere cerrar y asegurar el grupo de puntos.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Teje varios puntos altos en el mismo punto base, dejando sin cerrar la última lazada de cada uno.</li>
+                <li>Con todos los bucles en el ganchillo, toma la hebra y pásala por ellos para cerrar el grupo.</li>
+                <li>Haz una cadeneta para asegurar la palomita y continúa según el patrón.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Palomita / Pochoclo', 'https://www.youtube.com/embed/7QAHEsO86uY')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1340,7 +2067,17 @@
           <img src="assets/img/puntos/punto-waffle.png" alt="Ejemplo de tejido en Punto Waffle / Panal de Abeja" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Waffle / Panal de Abeja')">
           <h3>Punto Waffle / Panal de Abeja</h3>
           <p>Combinación de varetas normales y varetas en relieve por delante que generan celdas cuadradas profundas.</p>
-          <ul><li><strong>Uso:</strong> Paños de cocina y mantas térmicas.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Mantas, paños y tejidos gruesos con textura.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; alterna puntos altos y puntos en relieve.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Teje una hilera base de puntos altos.</li>
+                <li>En la siguiente hilera, alterna puntos altos y puntos altos en relieve por delante, siguiendo el motivo del patrón.</li>
+                <li>En las hileras siguientes, trabaja los puntos en relieve alrededor de los postes correspondientes para formar las celdas.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Waffle / Panal de Abeja', 'https://www.youtube.com/embed/ueCAn8zZhd4')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1360,7 +2097,17 @@
           <img src="assets/img/puntos/punto-garbanzo.png" alt="Ejemplo de tejido en Punto Garbanzo / Puff Stitch" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Garbanzo / Puff Stitch')">
           <h3>Punto Garbanzo / Puff Stitch</h3>
           <p>Múltiples lazadas retenidas en la aguja que se cierran juntas. Crea una textura suave y esponjosa.</p>
-          <ul><li><strong>Uso:</strong> Gorros de invierno abrigados.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Gorros, bufandas y detalles esponjosos.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; es importante mantener la misma cantidad de lazadas.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Inserta el ganchillo en el punto y toma la hebra para sacar un bucle alargado.</li>
+                <li>Repite la lazada y extracción varias veces en el mismo punto, hasta reunir los bucles necesarios para el patrón.</li>
+                <li>Toma la hebra y pásala por todos los bucles; ajusta suavemente para formar el punto garbanzo.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Garbanzo / Puff Stitch', 'https://www.youtube.com/embed/_RJoBuztmjw')">▶ Ver Video Explicativo</button>
         </article>
       </div>
@@ -1386,7 +2133,17 @@
           <img src="assets/img/puntos/punto-jazmin.png" alt="Ejemplo de tejido en Punto Jazmín o Estrella" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Jazmín o Estrella (Jasmine Stitch)')">
           <h3>Punto Jazmín o Estrella (Jasmine Stitch)</h3>
           <p>Un entramado botánico tridimensional formado por pétalos de lazadas retenidas que convergen en un centro.</p>
-          <ul><li><strong>Dificultad:</strong> Avanzado.</li><li><strong>Uso:</strong> Mantas de lujo y bolsos.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Mantas, bolsos y tejidos con motivos florales en relieve.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-advanced">Avanzado</span>; combina bucles levantados y cierres en secuencia.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Levanta bucles alargados en los puntos indicados para formar los pétalos de la estrella.</li>
+                <li>Toma la hebra y pásala por los bucles reunidos para cerrar el centro; haz una cadeneta para fijarlo.</li>
+                <li>Forma la siguiente estrella levantando bucles desde el centro y los puntos vecinos, y repite la secuencia del patrón.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Jazmín o Estrella', 'https://www.youtube.com/embed/QO6c69vM_HE')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1405,7 +2162,17 @@
           <img src="assets/img/puntos/punto-espiga.png" alt="Ejemplo de tejido en Punto Espiga / Herringbone" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Espiga / Herringbone')">
           <h3>Punto Espiga / Herringbone</h3>
           <p>Variación del medio punto alto con inclinación diagonal que imita el tejido en espina de pescado.</p>
-          <ul><li><strong>Uso:</strong> Abrigos y alfombras firmes.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Abrigos, bufandas y alfombras firmes.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; requiere una inserción y cierre de bucles específicos.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Haz una lazada e introduce el ganchillo en el punto.</li>
+                <li>Toma la hebra y pásala por el punto y por el primer bucle del ganchillo para crear la inclinación.</li>
+                <li>Toma la hebra nuevamente y pásala por los dos bucles restantes.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Espiga / Herringbone', 'https://www.youtube.com/embed/SrqylD7NBC8')">▶ Ver Video Explicativo</button>
         </article>
 
@@ -1422,7 +2189,17 @@
           <img src="assets/img/puntos/punto-chevron-zig-zag.png" alt="Ejemplo de tejido en Punto Chevron o Zig-Zag" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Chevron o Zig-Zag')">
           <h3>Punto Chevron o Zig-Zag</h3>
           <p>Estructura en picos y valles lograda combinando aumentos y disminuciones continuas de forma simétrica.</p>
-          <ul><li><strong>Uso:</strong> Mantas multicolores retro.</li></ul>
+          <ul>
+            <li><strong>Uso principal:</strong> Mantas, bufandas y diseños multicolores en zigzag.</li>
+            <li><strong>Dificultad:</strong> <span class="difficulty-badge difficulty-intermediate">Intermedio</span>; exige repetir aumentos y disminuciones de forma regular.</li>
+            <li><strong>Explicación paso a paso:</strong>
+              <ol>
+                <li>Prepara una base con el múltiplo de cadenetas indicado por el patrón y teje la primera hilera siguiendo su secuencia.</li>
+                <li>En cada pico, teje varios puntos en el mismo punto para aumentar; en cada valle, une puntos para disminuir.</li>
+                <li>Repite la misma distribución de picos y valles en cada hilera, contando los puntos para conservar la forma.</li>
+              </ol>
+            </li>
+          </ul>
           <button class="btn-video" onclick="abrirModalVideo('Punto Chevron o Zig-Zag', 'https://www.youtube.com/embed/IB78mM_nyiE')">▶ Ver Video Explicativo</button>
         </article>
       </div>
@@ -1497,10 +2274,137 @@
       </div>
     </section>
 
+    <details class="yarn-estimates">
+      <summary>Haz clic aquí para ver las estimaciones de hilo según la prenda</summary>
+      <div class="yarn-estimates-content">
+        <p>Orientación para hilo categoría 4 (Worsted/Aran) y puntos básicos. El metraje real cambia según el grosor del hilo, el punto y la tensión personal; revisa la etiqueta y teje una muestra antes de empezar.</p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Proyecto</th>
+                <th scope="col">Metraje aproximado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Gorro de adulto</td><td>150–250 m</td></tr>
+              <tr><td>Bufanda (aprox. 20 × 150 cm)</td><td>400–700 m</td></tr>
+              <tr><td>Chal mediano</td><td>600–1.000 m</td></tr>
+              <tr><td>Suéter de adulto</td><td>1.200–1.800 m</td></tr>
+              <tr><td>Manta de 1 × 1 m</td><td>800–1.200 m</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <section id="blog" aria-labelledby="blog-heading">
+      <h2 id="blog-heading">Blog</h2>
+      <article class="blog-article">
+        <h2 id="blog-title">Cómo elegir el grosor de lana y el ganchillo ideal: guía completa para principiantes</h2>
+        <p>Una de las dudas más frecuentes cuando empezamos en el mundo del crochet es saber qué hilo o lana utilizar y qué ganchillo corresponde a cada proyecto. Elegir el material adecuado no solo facilita el tejido: también ayuda a conseguir la caída, la textura y la firmeza deseadas en cada prenda o accesorio.</p>
+
+        <h3>1. Clasificación de los grosores de hilo (Standard Yarn Weight System)</h3>
+        <p>Los hilos se clasifican generalmente en categorías numeradas, desde los más finos hasta los más gruesos:</p>
+        <ul>
+          <li><strong>Categoría 0 - Encaje (Lace):</strong> hilos muy finos, utilizados para puntillas delicadas, chales de verano o trabajos en miniatura, como amigurumis pequeños.</li>
+          <li><strong>Categoría 1 - Superfino (Fingering / Sock):</strong> ideal para calcetines, ropa de bebé y prendas ligeras que requieren una puntada definida.</li>
+          <li><strong>Categoría 2 - Fino (Sport / Baby):</strong> un poco más grueso que el anterior; excelente para suéteres ligeros de niños y accesorios de primavera.</li>
+          <li><strong>Categoría 3 - Ligero (DK / Light Worsted):</strong> uno de los grosores más versátiles. Se utiliza mucho en mantas de bebé, amigurumis medianos y prendas de entretiempo.</li>
+          <li><strong>Categoría 4 - Mediano (Worsted / Aran):</strong> una opción muy popular para principiantes. Es fácil de tejer, permite avanzar rápido y funciona bien para bufandas, gorros y mantas.</li>
+          <li><strong>Categoría 5 - Grueso (Bulky / Chunky):</strong> perfecto para proyectos abrigados y rápidos, como cuellos, mantas gruesas de invierno y abrigos.</li>
+          <li><strong>Categorías 6 y 7 - Supergrueso y Jumbo (Super Bulky / Jumbo):</strong> hilos extragruesos, ideales para tejer con los dedos (<em>arm knitting</em>), hacer alfombras y crear cestos organizadores rígidos.</li>
+        </ul>
+
+        <h3>2. ¿Cómo saber qué ganchillo usar?</h3>
+        <p>Por lo general, la etiqueta de cada ovillo incluye una recomendación del fabricante con el tamaño de ganchillo, en milímetros, más adecuado para ese hilo.</p>
+        <ul>
+          <li><strong>Si usas un ganchillo más pequeño</strong> que el recomendado, las puntadas quedarán más apretadas y el tejido, más rígido; además, podrías consumir más material.</li>
+          <li><strong>Si usas un ganchillo más grande,</strong> el tejido quedará más suelto, con agujeros más grandes y una textura más blanda o elástica.</li>
+        </ul>
+
+        <h3>3. La importancia de la muestra de tensión</h3>
+        <p>Antes de empezar un proyecto grande, como un suéter o una manta, es muy recomendable tejer un pequeño cuadrado de prueba, por ejemplo, de 10 × 10 cm. Así podrás comprobar si la combinación de hilo, ganchillo y tensión personal coincide con las medidas indicadas en el patrón.</p>
+      </article>
+
+      <article class="blog-article" aria-labelledby="blog-errores-title">
+        <h2 id="blog-errores-title">7 errores comunes al empezar a tejer crochet (y cómo evitarlos)</h2>
+        <p>Aprender a tejer a crochet es un proceso lleno de creatividad y satisfacción, pero es completamente normal cometer algunos tropiezos en los primeros proyectos. Desde puntos que se tuercen hasta bordes que van perdiendo forma, la mayoría de quienes empiezan se enfrentan a desafíos similares.</p>
+        <p>A continuación, repasamos siete errores habituales y soluciones sencillas para corregirlos desde el primer día:</p>
+
+        <h3>1. Perder o agregar puntos en los extremos</h3>
+        <p>Es el problema número uno: empiezas un tejido con 20 puntos y, tras un par de vueltas, terminas con 18 o con 22. Esto ocurre porque es fácil saltarse el primer o el último punto de una fila, o tejer por error en la cadeneta de subida.</p>
+        <p><strong>La solución:</strong> Acostúmbrate a contar los puntos al finalizar cada vuelta y utiliza marcadores en el primer y el último punto de la hilera.</p>
+
+        <h3>2. Sostener el hilo con demasiada tensión</h3>
+        <p>Apretar demasiado al tejer hace que los puntos queden rígidos, dificulta insertar el ganchillo en la siguiente vuelta y puede causar fatiga en las manos.</p>
+        <p><strong>La solución:</strong> Deja que el hilo fluya suavemente entre tus dedos. Si te cuesta introducir el ganchillo, prueba con uno 0,5 mm o 1 mm más grande y comprueba cómo queda la muestra.</p>
+
+        <h3>3. Usar un ganchillo inadecuado para el tipo de lana</h3>
+        <p>Tejer un hilo muy fino con un ganchillo grande puede crear un tejido con agujeros amplios, mientras que usar uno demasiado pequeño con lana gruesa puede dar como resultado un tejido rígido y pesado.</p>
+        <p><strong>La solución:</strong> Consulta la etiqueta de la lana y haz una muestra para comprobar el resultado. También puedes orientarte con nuestra <a href="#calculadora-lana" onclick="scrollASeccion(event, 'calculadora-lana')">Calculadora de Lana</a> y la sección de <a href="#inicio" onclick="scrollASeccion(event, 'inicio')">Abreviaturas y Equivalencias</a>.</p>
+
+        <h3>4. No tejer una muestra de tensión</h3>
+        <p>Empezar directamente un suéter o un gorro sin probar el hilo puede terminar en una prenda demasiado grande o pequeña. La tensión de cada persona al tejer es única.</p>
+        <p><strong>La solución:</strong> Teje un cuadrado de prueba de 10 × 10 cm con el punto que utilizarás en el patrón y compara sus medidas con la muestra indicada.</p>
+
+        <h3>5. Tomar solo una de las hebras de la cadeneta</h3>
+        <p>Salvo que el patrón lo especifique —por ejemplo, para crear relieve mediante la técnica <em>BLO</em> o <em>FLO</em>—, al insertar el ganchillo en un punto se suelen tomar las dos hebras superiores, que forman una “V”.</p>
+        <p><strong>La solución:</strong> Antes de hacer la lazada, asegúrate de pasar el ganchillo por debajo de las dos hebras de la “V”.</p>
+
+        <h3>6. Ignorar la diferencia entre los términos de EE. UU. y Reino Unido</h3>
+        <p>Los nombres de los puntos pueden variar entre sistemas. Por ejemplo, el punto alto estadounidense (<em>double crochet</em>) equivale al punto alto británico (<em>treble crochet</em>), no al punto medio alto. Seguir un patrón sin saber qué convención utiliza puede alterar el tamaño del tejido.</p>
+        <p><strong>La solución:</strong> Revisa nuestra sección de <a href="#inicio" onclick="scrollASeccion(event, 'inicio')">Abreviaturas y Equivalencias</a> y confirma si el patrón está escrito con términos de EE. UU. o del Reino Unido.</p>
+
+        <h3>7. Tirar los restos de hilo</h3>
+        <p>Las pequeñas hebras que quedan al terminar un proyecto pueden ser útiles para detalles y proyectos pequeños.</p>
+        <p><strong>La solución:</strong> Guárdalas en un frasco o una caja. Pueden servir para bordar ojos en amigurumis, tejer pequeñas flores o como relleno para muñecos.</p>
+      </article>
+
+      <article class="blog-article" aria-labelledby="blog-cuidados-title">
+        <h2 id="blog-cuidados-title">Guía definitiva para lavar, bloquear y cuidar tus prendas tejidas a crochet</h2>
+        <p>Invertir tiempo y dedicación en tejer una prenda o accesorio a mano merece un cuidado a la altura. Un lavado inadecuado o un secado incorrecto pueden estirar el tejido, apelmazar las fibras o hacer que pierda su forma original.</p>
+        <p>Con esta guía paso a paso aprenderás a conservar tus creaciones de crochet impecables como el primer día:</p>
+
+        <h3>1. ¿Lavado a mano o en lavadora?</h3>
+        <p>La regla de oro para cualquier labor hecha a mano es revisar la composición del hilo y seguir las instrucciones de cuidado de su etiqueta:</p>
+        <ul>
+          <li><strong>Lanas naturales (merino, alpaca, mohair):</strong> es preferible lavarlas a mano con agua fría o tibia, a un máximo de 30 °C. Los cambios bruscos de temperatura y la fricción pueden hacer que las fibras se enganchen entre sí, provocando que la prenda se apelmace o encoja (fieltrado).</li>
+          <li><strong>Hilos de algodón y acrílicos:</strong> algunos permiten el lavado a máquina en un programa delicado. Usa una bolsa de red protectora y confirma primero las indicaciones de la etiqueta.</li>
+        </ul>
+
+        <h3>2. El jabón adecuado y el aclarado</h3>
+        <p>Utiliza detergentes neutros para prendas delicadas o jabones específicos para lana, siguiendo las instrucciones del producto.</p>
+        <ul>
+          <li>Evita los suavizantes comerciales en fibras de origen animal: pueden recubrir las fibras y afectar su transpirabilidad y textura.</li>
+          <li>No frotes ni retuerzas la prenda. Presiónala suavemente con las manos para que el agua jabonosa penetre entre los puntos y aclara con cuidado.</li>
+        </ul>
+
+        <h3>3. El truco de la toalla para eliminar el exceso de agua</h3>
+        <p>Retorcer una prenda tejida a mano puede alterar la forma y la tensión de los puntos. Para escurrirla sin dañarla:</p>
+        <ol>
+          <li>Extiende una toalla limpia sobre una superficie plana.</li>
+          <li>Coloca la prenda húmeda encima.</li>
+          <li>Enrolla la toalla con la prenda dentro formando un cilindro y presiona suavemente para que absorba la mayor parte de la humedad.</li>
+        </ol>
+
+        <h3>4. Secado en plano: la clave para mantener la forma</h3>
+        <p><strong>Evita colgar una prenda de crochet mientras esté húmeda.</strong> El peso del agua puede estirar los puntos y deformar la silueta, especialmente en los hombros y el escote.</p>
+        <p>Déjala secar extendida en horizontal sobre una superficie plana y ventilada, alejada de la luz directa del sol y de fuentes de calor intenso, como radiadores.</p>
+
+        <h3>5. El proceso de <em>bloqueo (blocking)</em></h3>
+        <p>El bloqueo consiste en dar forma final al tejido mediante humedad y alfileres, respetando la composición de la fibra y las indicaciones de cuidado.</p>
+        <ul>
+          <li><strong>Ideal para:</strong> chales, grannys de ganchillo, calados y bordes que se enrollan.</li>
+          <li><strong>Cómo hacerlo:</strong> humedece la prenda, colócala sobre una superficie adecuada para bloquear (como una alfombrilla de goma EVA), fija los bordes con alfileres inoxidables siguiendo las medidas del patrón y déjala secar completamente antes de retirarlos.</li>
+        </ul>
+      </article>
+    </section>
+
     <!-- SECCIÓN PREGUNTAS FRECUENTES -->
     <section id="faq" class="faq-section">
       <h2>Preguntas Frecuentes sobre Puntos de Crochet</h2>
-      
+
       <div class="faq-item">
         <h3>¿Cuáles son los puntos de crochet más recomendados para principiantes?</h3>
         <p>Los puntos ideales para comenzar son la cadeneta (cad), el punto bajo (pb) y el punto alto (pa). Con dominar estas tres técnicas es posible elaborar bufandas, mantas y fundas simples.</p>
@@ -1568,7 +2472,7 @@
     <div class="modal-content">
       <button class="modal-close" onclick="cerrarModalVideo()">&times;</button>
       <h3 id="modal-titulo" class="modal-title">Tutorial del Punto</h3>
-      
+
       <div class="video-wrapper">
         <iframe id="modal-iframe" src="" allowfullscreen></iframe>
       </div>

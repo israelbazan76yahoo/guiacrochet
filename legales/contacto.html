@@ -7,6 +7,9 @@
   <meta name="description" content="Página de contacto oficial de GuíaCrochet. Escríbenos para dudas, consultas o sugerencias sobre nuestros tutoriales de crochet y calculadora de lana.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://guiacrochet.com/legales/contacto.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -54,10 +57,22 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Nunito', system-ui, sans-serif;
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -0.025em;
       color: var(--primary-color);
       text-decoration: none;
+    }
+
+    .brand-yarn-icon {
+      width: 1.1em;
+      height: 1.1em;
+      color: #b7793e;
+      flex: none;
     }
 
     .header-links a {
@@ -69,6 +84,30 @@
 
     .header-links a:hover {
       color: var(--primary-color);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        height: auto;
+      }
+
+      .header-container {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .brand {
+        flex: 1 1 100%;
+      }
+
+      .header-links {
+        margin-left: auto;
+      }
+
+      .header-links a {
+        font-size: 0.9rem;
+      }
     }
 
     /* CONTENIDO PRINCIPAL */
@@ -179,7 +218,13 @@
 
   <header>
     <div class="header-container">
-      <a href="../index.html" class="brand">GuíaCrochet</a>
+      <a href="../index.html" class="brand">
+        GuíaCrochet
+        <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+        </svg>
+      </a>
       <div class="header-links">
         <a href="../index.html">← Volver al Inicio</a>
       </div>
