@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad | GuíaCrochet</title>
-  <meta name="description" content="Política de privacidad de GuíaCrochet. Información sobre el uso de cookies, cookies de terceros (Google AdSense), protección de datos y derechos del usuario.">
+  <title>Política de Privacidad | GuiaCrochet</title>
+  <meta name="description" content="Política de privacidad de GuiaCrochet. Información sobre el uso de cookies, cookies de terceros (Google AdSense), protección de datos y derechos del usuario.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://guiacrochet.com/legales/privacidad">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,13 @@
   <style>
     :root {
       --primary-color: #7c3aed;
+      --primary-hover: #6d28d9;
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
       --text-color: #1e293b;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
+      --header-height: 64px;
     }
 
     * {
@@ -38,18 +40,24 @@
     header {
       background-color: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
+      height: var(--header-height);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    nav {
-      max-width: 900px;
+    .header-container {
+      max-width: 1100px;
+      height: 100%;
       margin: 0 auto;
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .brand {
+      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -61,6 +69,36 @@
       text-decoration: none;
     }
 
+    .brand-tooltip {
+      position: absolute;
+      top: calc(100% + 0.65rem);
+      left: 0;
+      z-index: 1100;
+      width: max-content;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+      color: var(--text-color);
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+
+    .brand:hover .brand-tooltip,
+    .brand:focus-visible .brand-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     .brand-yarn-icon {
       width: 1.1em;
       height: 1.1em;
@@ -68,36 +106,31 @@
       flex: none;
     }
 
-    nav a {
+    .header-links a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .header-links a:hover {
+      color: var(--primary-color);
     }
 
     @media (max-width: 480px) {
-      header {
-        padding: 0.75rem 1rem;
-      }
+      .header-container { padding: 0 0.75rem; }
+      .header-links a { font-size: 0.82rem; }
+    }
 
-      nav {
-        flex-wrap: wrap;
-        row-gap: 0.35rem;
-      }
-
-      nav .brand {
-        flex: 1 1 100%;
-      }
-
-      nav > a:last-child {
-        margin-left: auto;
-        font-size: 0.9rem;
-      }
+    @media (max-width: 768px) {
+      .brand-tooltip { display: none; }
     }
 
     main {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 2rem 1rem;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 10px;
@@ -152,8 +185,10 @@
     }
 
     footer {
-      max-width: 900px;
+      max-width: 1100px;
+      width: 100%;
       margin: 2rem auto 0 auto;
+      padding: 0 1rem;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -163,33 +198,38 @@
       margin: 0 0.5rem;
     }
   </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800113345128144"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 
   <header>
-    <nav>
-      <a href="../index.html" class="brand">
-        GuíaCrochet
+    <div class="header-container">
+      <a href="../index.html" class="brand" aria-label="GuiaCrochet - Ir al inicio" aria-describedby="brand-tooltip">
+        GuiaCrochet
         <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
           <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
         </svg>
+        <span id="brand-tooltip" class="brand-tooltip" role="tooltip">Ir al inicio</span>
       </a>
-      <a href="../index.html">← Volver al Inicio</a>
-    </nav>
+      <nav class="header-links" aria-label="Navegación principal">
+        <a href="../index.html">← Volver al Inicio</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <h1>Política de Privacidad</h1>
     <p class="last-updated">Última actualización: 6 de octubre de 2026</p>
 
-    <p>En <strong>GuíaCrochet</strong> (accesible desde <a href="https://guiacrochet.com">https://guiacrochet.com</a>), una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene los tipos de información que recopilamos, cómo la utilizamos y las condiciones relativas a la publicidad y las cookies de terceros.</p>
+    <p>En <strong>GuiaCrochet</strong> (accesible desde <a href="https://guiacrochet.com">https://guiacrochet.com</a>), una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene los tipos de información que recopilamos, cómo la utilizamos y las condiciones relativas a la publicidad y las cookies de terceros.</p>
 
     <h2>1. Responsable del Tratamiento de Datos</h2>
-    <p>El sitio web <strong>GuíaCrochet</strong> opera como un portal de contenidos informativos y de consulta sobre técnicas y puntos de ganchillo. Para cualquier duda o consulta sobre la protección de sus datos personales, puede contactarnos a través de nuestro correo electrónico: <code>israelbazan76@gmail.com</code>.</p>
+    <p>El sitio web <strong>GuiaCrochet</strong> opera como un portal de contenidos informativos y de consulta sobre técnicas y puntos de ganchillo. Para cualquier duda o consulta sobre la protección de sus datos personales, puede contactarnos a través de nuestro correo electrónico: <code>israelbazan76@gmail.com</code>.</p>
 
     <h2>2. Cookies y Archivos de Registro (Log Files)</h2>
-    <p>GuíaCrochet sigue un procedimiento estándar de uso de archivos de registro. Estos archivos registran a los visitantes cuando navegan por sitios web. La información recopilada incluye:</p>
+    <p>GuiaCrochet sigue un procedimiento estándar de uso de archivos de registro. Estos archivos registran a los visitantes cuando navegan por sitios web. La información recopilada incluye:</p>
     <ul>
       <li>Direcciones de protocolo de Internet (IP).</li>
       <li>Tipo de navegador y proveedor de servicios de Internet (ISP).</li>
@@ -210,24 +250,24 @@
     </div>
 
     <h2>4. Enlaces y Anuncios de Terceros</h2>
-    <p>Los servidores de anuncios de terceros o redes publicitarias utilizan tecnologías como cookies, JavaScript o Web Beacons que se utilizan en sus respectivos anuncios y enlaces que aparecen en GuíaCrochet, los cuales se envían directamente al navegador de los usuarios. Reciben automáticamente su dirección IP cuando esto ocurre.</p>
-    <p>Tenga en cuenta que GuíaCrochet no tiene acceso ni control sobre estas cookies que son utilizadas por anunciantes de terceros.</p>
+    <p>Los servidores de anuncios de terceros o redes publicitarias utilizan tecnologías como cookies, JavaScript o Web Beacons que se utilizan en sus respectivos anuncios y enlaces que aparecen en GuiaCrochet, los cuales se envían directamente al navegador de los usuarios. Reciben automáticamente su dirección IP cuando esto ocurre.</p>
+    <p>Tenga en cuenta que GuiaCrochet no tiene acceso ni control sobre estas cookies que son utilizadas por anunciantes de terceros.</p>
 
     <h2>5. Políticas de Privacidad de Terceros</h2>
-    <p>La Política de Privacidad de GuíaCrochet no se aplica a otros anunciantes o sitios web. Por lo tanto, le aconsejamos que consulte las respectivas Políticas de Privacidad de estos servidores de anuncios de terceros para obtener información más detallada sobre sus prácticas y cómo inhabilitar ciertas opciones.</p>
+    <p>La Política de Privacidad de GuiaCrochet no se aplica a otros anunciantes o sitios web. Por lo tanto, le aconsejamos que consulte las respectivas Políticas de Privacidad de estos servidores de anuncios de terceros para obtener información más detallada sobre sus prácticas y cómo inhabilitar ciertas opciones.</p>
 
     <h2>6. Gestión y Desactivación de Cookies</h2>
     <p>Usted puede optar por desactivar las cookies a través de las opciones individuales de su navegador. Para obtener información más detallada sobre la gestión de cookies con navegadores web específicos, la encontrará en los sitios web respectivos de los navegadores (Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Brave).</p>
 
     <h2>7. Protección de Datos de Menores</h2>
-    <p>Otra de nuestras prioridades es añadir protección para los niños mientras usan Internet. Animamos a los padres y tutores a observar, participar y/o monitorear y guiar su actividad en línea. GuíaCrochet no recopila a sabiendas ninguna Información de Identificación Personal de niños menores de 13 años.</p>
+    <p>Otra de nuestras prioridades es añadir protección para los niños mientras usan Internet. Animamos a los padres y tutores a observar, participar y/o monitorear y guiar su actividad en línea. GuiaCrochet no recopila a sabiendas ninguna Información de Identificación Personal de niños menores de 13 años.</p>
 
     <h2>8. Aceptación de los Términos</h2>
     <p>Al utilizar nuestro sitio web, usted acepta nuestra Política de Privacidad y está de acuerdo con sus términos y condiciones.</p>
   </main>
 
   <footer>
-    <p>&copy; 2026 GuíaCrochet. Todos los derechos reservados.</p>
+    <p>&copy; 2026 GuiaCrochet. Todos los derechos reservados.</p>
     <p>
       <a href="../index.html">Inicio</a> | 
       <a href="terminos.html">Términos de Uso</a> | 

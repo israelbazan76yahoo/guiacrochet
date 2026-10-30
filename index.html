@@ -20,6 +20,8 @@
       --primary-hover: #6d28d9;
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
+      --section-lavender: #f5f0ff;
+      --section-cream: #fffbeb;
       --text-color: #1e293b;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
@@ -66,6 +68,7 @@
     }
 
     .brand {
+      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -75,6 +78,44 @@
       letter-spacing: -0.025em;
       color: var(--primary-color);
       text-decoration: none;
+    }
+
+    .brand-tooltip {
+      position: absolute;
+      top: calc(100% + 0.65rem);
+      left: 0;
+      z-index: 1100;
+      width: max-content;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+      color: var(--text-color);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.4;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+
+    .brand:hover .brand-tooltip,
+    .brand:focus-visible .brand-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .brand-tooltip {
+        display: none;
+      }
     }
 
     .brand-yarn-icon {
@@ -138,6 +179,7 @@
     }
 
     .tab-btn {
+      position: relative;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       padding: 0.5rem 1rem;
@@ -150,6 +192,65 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+    }
+
+    .menu-tooltip {
+      position: absolute;
+      top: calc(100% + 0.65rem);
+      left: 50%;
+      z-index: 1100;
+      width: max-content;
+      max-width: min(240px, calc(100vw - 2rem));
+      padding: 0.65rem 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+      color: var(--text-color);
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.45;
+      text-align: left;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+
+    .tab-btn:hover .menu-tooltip,
+    .tab-btn:focus-visible .menu-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .tabs-navigation > .tab-btn:first-child .menu-tooltip {
+      left: 0;
+      transform: translateY(-4px);
+    }
+
+    .tabs-navigation > .tab-btn:first-child:hover .menu-tooltip,
+    .tabs-navigation > .tab-btn:first-child:focus-visible .menu-tooltip {
+      transform: translateY(0);
+    }
+
+    .tabs-navigation > .tab-btn:last-child .menu-tooltip {
+      right: 0;
+      left: auto;
+      transform: translateY(-4px);
+    }
+
+    .tabs-navigation > .tab-btn:last-child:hover .menu-tooltip,
+    .tabs-navigation > .tab-btn:last-child:focus-visible .menu-tooltip {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .menu-tooltip {
+        display: none;
+      }
     }
 
     .tab-btn:hover {
@@ -367,34 +468,62 @@
       margin-bottom: 2.5rem;
     }
 
-    .blog-article {
+    main > section:not(.hero):not(.calculator-container):nth-of-type(even) {
+      padding: 1.5rem;
+      background-color: var(--section-lavender);
+      border-radius: 12px;
+    }
+
+    main > section:not(.hero):not(.calculator-container):nth-of-type(odd) {
+      padding: 1.5rem;
+      background-color: var(--section-cream);
+      border-radius: 12px;
+    }
+
+    @media (max-width: 600px) {
+      main > section:not(.hero):not(.calculator-container) {
+        padding: 1rem;
+      }
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: 1.25rem;
+    }
+
+    .blog-preview {
+      min-width: 0;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
     }
 
-    .blog-article + .blog-article {
-      margin-top: 1.25rem;
-    }
-
-    .blog-article h3 {
-      font-size: 1.1rem;
+    .blog-preview h3 {
+      font-size: 1.15rem;
       color: #1e1b4b;
-      margin: 1.5rem 0 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .blog-article p,
-    .blog-article li {
+    .blog-preview p {
       color: #334155;
+      margin-bottom: 1rem;
     }
 
-    .blog-article ul {
-      margin: 0.5rem 0 0 1.25rem;
+    .blog-read-more {
+      align-self: flex-start;
+      margin-top: auto;
+      color: var(--primary-color);
+      font-weight: 700;
+      text-decoration: none;
     }
 
-    .blog-article li {
-      margin-bottom: 0.5rem;
+    .blog-read-more:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
     }
 
     h2 {
@@ -1044,7 +1173,7 @@
 
     @media (min-width: 640px) {
       .hero {
-        padding: 3rem 1.5rem;
+        padding: 1.5rem 1.5rem 3rem;
       }
 
       .hero-actions {
@@ -1524,12 +1653,13 @@
 
   <header>
     <div class="header-container">
-      <a href="#" class="brand">
+      <a href="#" class="brand" aria-label="GuiaCrochet - Ir al inicio" aria-describedby="brand-tooltip">
         GuiaCrochet
         <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
           <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
         </svg>
+        <span id="brand-tooltip" class="brand-tooltip" role="tooltip">Ir al inicio</span>
       </a>
       <div class="header-links">
         <a href="legales/contacto.html">Contacto</a>
@@ -1545,16 +1675,19 @@
       </button>
       <nav id="tabs-navigation" class="tabs-navigation" aria-label="Navegación por categorías">
 
-        <button class="tab-btn" onclick="switchTab(event, 'inicio')">
+        <button class="tab-btn" aria-describedby="tooltip-abreviaturas" onclick="switchTab(event, 'inicio')">
           📖 Abreviaturas y Equivalencias
+          <span id="tooltip-abreviaturas" class="menu-tooltip" role="tooltip">Consulta abreviaturas y equivalencias de puntos en español, inglés de EE. UU. y Reino Unido.</span>
         </button>
-        <button class="tab-btn" onclick="switchTab(event, 'simbolos-universales')">
-          📖 Símbolos Universales
+        <button class="tab-btn" aria-describedby="tooltip-simbolos" onclick="switchTab(event, 'simbolos-universales')">
+          🔣 Símbolos Universales
+          <span id="tooltip-simbolos" class="menu-tooltip" role="tooltip">Aprende a interpretar los símbolos estándar de los gráficos de crochet.</span>
         </button>
         <!-- DROPDOWN COMPACTO PARA LOS PUNTOS -->
         <div class="dropdown-container">
-          <button id="puntos-tab-btn" class="tab-btn dropdown-toggle" onclick="toggleDropdown(event)">
+          <button id="puntos-tab-btn" class="tab-btn dropdown-toggle" aria-describedby="tooltip-catalogo-puntos" onclick="toggleDropdown(event)">
             🧶 Catálogo de Puntos ▾
+            <span id="tooltip-catalogo-puntos" class="menu-tooltip" role="tooltip">Explora puntos básicos, calados, de relieve y de fantasía con ejemplos visuales.</span>
           </button>
           <div id="puntos-dropdown-menu" class="dropdown-menu">
             <button class="dropdown-item" onclick="selectPuntoOption(event, 'puntos-basicos')">1. Puntos Básicos</button>
@@ -1564,16 +1697,19 @@
           </div>
         </div>
 
-        <button class="tab-btn" onclick="switchTab(event, 'calculadora-lana')">
+        <button class="tab-btn" aria-describedby="tooltip-calculadora" onclick="switchTab(event, 'calculadora-lana')">
           🧮 Calculadora de Lana
+          <span id="tooltip-calculadora" class="menu-tooltip" role="tooltip">Estima cuánta lana necesitas según la muestra, las medidas y el tipo de punto.</span>
         </button>
 
-        <button class="tab-btn" onclick="switchTab(event, 'blog')">
+        <button class="tab-btn" aria-describedby="tooltip-blog" onclick="switchTab(event, 'blog')">
           📝 Blog
+          <span id="tooltip-blog" class="menu-tooltip" role="tooltip">Lee guías y consejos para elegir materiales, aprender y cuidar tus tejidos.</span>
         </button>
 
-        <button class="tab-btn" onclick="switchTab(event, 'faq')">
+        <button class="tab-btn" aria-describedby="tooltip-faq" onclick="switchTab(event, 'faq')">
           ❓ Preguntas Frecuentes
+          <span id="tooltip-faq" class="menu-tooltip" role="tooltip">Encuentra respuestas rápidas sobre puntos de crochet y uso de la calculadora.</span>
         </button>
       </nav>
     </div>
@@ -2300,105 +2436,25 @@
 
     <section id="blog" aria-labelledby="blog-heading">
       <h2 id="blog-heading">Blog</h2>
-      <article class="blog-article">
-        <h2 id="blog-title">Cómo elegir el grosor de lana y el ganchillo ideal: guía completa para principiantes</h2>
-        <p>Una de las dudas más frecuentes cuando empezamos en el mundo del crochet es saber qué hilo o lana utilizar y qué ganchillo corresponde a cada proyecto. Elegir el material adecuado no solo facilita el tejido: también ayuda a conseguir la caída, la textura y la firmeza deseadas en cada prenda o accesorio.</p>
+      <div class="blog-grid">
+        <article class="blog-preview">
+          <h3>Cómo elegir el grosor de lana y el ganchillo ideal: guía completa para principiantes</h3>
+          <p>Descubre cómo se clasifican los grosores de hilo, qué ganchillo elegir y por qué hacer una muestra de tensión antes de comenzar tu proyecto.</p>
+          <a class="blog-read-more" href="blog/elegir-grosor-lana-ganchillo.html">Leer más</a>
+        </article>
 
-        <h3>1. Clasificación de los grosores de hilo (Standard Yarn Weight System)</h3>
-        <p>Los hilos se clasifican generalmente en categorías numeradas, desde los más finos hasta los más gruesos:</p>
-        <ul>
-          <li><strong>Categoría 0 - Encaje (Lace):</strong> hilos muy finos, utilizados para puntillas delicadas, chales de verano o trabajos en miniatura, como amigurumis pequeños.</li>
-          <li><strong>Categoría 1 - Superfino (Fingering / Sock):</strong> ideal para calcetines, ropa de bebé y prendas ligeras que requieren una puntada definida.</li>
-          <li><strong>Categoría 2 - Fino (Sport / Baby):</strong> un poco más grueso que el anterior; excelente para suéteres ligeros de niños y accesorios de primavera.</li>
-          <li><strong>Categoría 3 - Ligero (DK / Light Worsted):</strong> uno de los grosores más versátiles. Se utiliza mucho en mantas de bebé, amigurumis medianos y prendas de entretiempo.</li>
-          <li><strong>Categoría 4 - Mediano (Worsted / Aran):</strong> una opción muy popular para principiantes. Es fácil de tejer, permite avanzar rápido y funciona bien para bufandas, gorros y mantas.</li>
-          <li><strong>Categoría 5 - Grueso (Bulky / Chunky):</strong> perfecto para proyectos abrigados y rápidos, como cuellos, mantas gruesas de invierno y abrigos.</li>
-          <li><strong>Categorías 6 y 7 - Supergrueso y Jumbo (Super Bulky / Jumbo):</strong> hilos extragruesos, ideales para tejer con los dedos (<em>arm knitting</em>), hacer alfombras y crear cestos organizadores rígidos.</li>
-        </ul>
+        <article class="blog-preview">
+          <h3>7 errores comunes al empezar a tejer crochet (y cómo evitarlos)</h3>
+          <p>Aprende a detectar y corregir los tropiezos más habituales al empezar: desde perder puntos hasta elegir una tensión o un ganchillo inadecuados.</p>
+          <a class="blog-read-more" href="blog/errores-comunes-crochet.html">Leer más</a>
+        </article>
 
-        <h3>2. ¿Cómo saber qué ganchillo usar?</h3>
-        <p>Por lo general, la etiqueta de cada ovillo incluye una recomendación del fabricante con el tamaño de ganchillo, en milímetros, más adecuado para ese hilo.</p>
-        <ul>
-          <li><strong>Si usas un ganchillo más pequeño</strong> que el recomendado, las puntadas quedarán más apretadas y el tejido, más rígido; además, podrías consumir más material.</li>
-          <li><strong>Si usas un ganchillo más grande,</strong> el tejido quedará más suelto, con agujeros más grandes y una textura más blanda o elástica.</li>
-        </ul>
-
-        <h3>3. La importancia de la muestra de tensión</h3>
-        <p>Antes de empezar un proyecto grande, como un suéter o una manta, es muy recomendable tejer un pequeño cuadrado de prueba, por ejemplo, de 10 × 10 cm. Así podrás comprobar si la combinación de hilo, ganchillo y tensión personal coincide con las medidas indicadas en el patrón.</p>
-      </article>
-
-      <article class="blog-article" aria-labelledby="blog-errores-title">
-        <h2 id="blog-errores-title">7 errores comunes al empezar a tejer crochet (y cómo evitarlos)</h2>
-        <p>Aprender a tejer a crochet es un proceso lleno de creatividad y satisfacción, pero es completamente normal cometer algunos tropiezos en los primeros proyectos. Desde puntos que se tuercen hasta bordes que van perdiendo forma, la mayoría de quienes empiezan se enfrentan a desafíos similares.</p>
-        <p>A continuación, repasamos siete errores habituales y soluciones sencillas para corregirlos desde el primer día:</p>
-
-        <h3>1. Perder o agregar puntos en los extremos</h3>
-        <p>Es el problema número uno: empiezas un tejido con 20 puntos y, tras un par de vueltas, terminas con 18 o con 22. Esto ocurre porque es fácil saltarse el primer o el último punto de una fila, o tejer por error en la cadeneta de subida.</p>
-        <p><strong>La solución:</strong> Acostúmbrate a contar los puntos al finalizar cada vuelta y utiliza marcadores en el primer y el último punto de la hilera.</p>
-
-        <h3>2. Sostener el hilo con demasiada tensión</h3>
-        <p>Apretar demasiado al tejer hace que los puntos queden rígidos, dificulta insertar el ganchillo en la siguiente vuelta y puede causar fatiga en las manos.</p>
-        <p><strong>La solución:</strong> Deja que el hilo fluya suavemente entre tus dedos. Si te cuesta introducir el ganchillo, prueba con uno 0,5 mm o 1 mm más grande y comprueba cómo queda la muestra.</p>
-
-        <h3>3. Usar un ganchillo inadecuado para el tipo de lana</h3>
-        <p>Tejer un hilo muy fino con un ganchillo grande puede crear un tejido con agujeros amplios, mientras que usar uno demasiado pequeño con lana gruesa puede dar como resultado un tejido rígido y pesado.</p>
-        <p><strong>La solución:</strong> Consulta la etiqueta de la lana y haz una muestra para comprobar el resultado. También puedes orientarte con nuestra <a href="#calculadora-lana" onclick="scrollASeccion(event, 'calculadora-lana')">Calculadora de Lana</a> y la sección de <a href="#inicio" onclick="scrollASeccion(event, 'inicio')">Abreviaturas y Equivalencias</a>.</p>
-
-        <h3>4. No tejer una muestra de tensión</h3>
-        <p>Empezar directamente un suéter o un gorro sin probar el hilo puede terminar en una prenda demasiado grande o pequeña. La tensión de cada persona al tejer es única.</p>
-        <p><strong>La solución:</strong> Teje un cuadrado de prueba de 10 × 10 cm con el punto que utilizarás en el patrón y compara sus medidas con la muestra indicada.</p>
-
-        <h3>5. Tomar solo una de las hebras de la cadeneta</h3>
-        <p>Salvo que el patrón lo especifique —por ejemplo, para crear relieve mediante la técnica <em>BLO</em> o <em>FLO</em>—, al insertar el ganchillo en un punto se suelen tomar las dos hebras superiores, que forman una “V”.</p>
-        <p><strong>La solución:</strong> Antes de hacer la lazada, asegúrate de pasar el ganchillo por debajo de las dos hebras de la “V”.</p>
-
-        <h3>6. Ignorar la diferencia entre los términos de EE. UU. y Reino Unido</h3>
-        <p>Los nombres de los puntos pueden variar entre sistemas. Por ejemplo, el punto alto estadounidense (<em>double crochet</em>) equivale al punto alto británico (<em>treble crochet</em>), no al punto medio alto. Seguir un patrón sin saber qué convención utiliza puede alterar el tamaño del tejido.</p>
-        <p><strong>La solución:</strong> Revisa nuestra sección de <a href="#inicio" onclick="scrollASeccion(event, 'inicio')">Abreviaturas y Equivalencias</a> y confirma si el patrón está escrito con términos de EE. UU. o del Reino Unido.</p>
-
-        <h3>7. Tirar los restos de hilo</h3>
-        <p>Las pequeñas hebras que quedan al terminar un proyecto pueden ser útiles para detalles y proyectos pequeños.</p>
-        <p><strong>La solución:</strong> Guárdalas en un frasco o una caja. Pueden servir para bordar ojos en amigurumis, tejer pequeñas flores o como relleno para muñecos.</p>
-      </article>
-
-      <article class="blog-article" aria-labelledby="blog-cuidados-title">
-        <h2 id="blog-cuidados-title">Guía definitiva para lavar, bloquear y cuidar tus prendas tejidas a crochet</h2>
-        <p>Invertir tiempo y dedicación en tejer una prenda o accesorio a mano merece un cuidado a la altura. Un lavado inadecuado o un secado incorrecto pueden estirar el tejido, apelmazar las fibras o hacer que pierda su forma original.</p>
-        <p>Con esta guía paso a paso aprenderás a conservar tus creaciones de crochet impecables como el primer día:</p>
-
-        <h3>1. ¿Lavado a mano o en lavadora?</h3>
-        <p>La regla de oro para cualquier labor hecha a mano es revisar la composición del hilo y seguir las instrucciones de cuidado de su etiqueta:</p>
-        <ul>
-          <li><strong>Lanas naturales (merino, alpaca, mohair):</strong> es preferible lavarlas a mano con agua fría o tibia, a un máximo de 30 °C. Los cambios bruscos de temperatura y la fricción pueden hacer que las fibras se enganchen entre sí, provocando que la prenda se apelmace o encoja (fieltrado).</li>
-          <li><strong>Hilos de algodón y acrílicos:</strong> algunos permiten el lavado a máquina en un programa delicado. Usa una bolsa de red protectora y confirma primero las indicaciones de la etiqueta.</li>
-        </ul>
-
-        <h3>2. El jabón adecuado y el aclarado</h3>
-        <p>Utiliza detergentes neutros para prendas delicadas o jabones específicos para lana, siguiendo las instrucciones del producto.</p>
-        <ul>
-          <li>Evita los suavizantes comerciales en fibras de origen animal: pueden recubrir las fibras y afectar su transpirabilidad y textura.</li>
-          <li>No frotes ni retuerzas la prenda. Presiónala suavemente con las manos para que el agua jabonosa penetre entre los puntos y aclara con cuidado.</li>
-        </ul>
-
-        <h3>3. El truco de la toalla para eliminar el exceso de agua</h3>
-        <p>Retorcer una prenda tejida a mano puede alterar la forma y la tensión de los puntos. Para escurrirla sin dañarla:</p>
-        <ol>
-          <li>Extiende una toalla limpia sobre una superficie plana.</li>
-          <li>Coloca la prenda húmeda encima.</li>
-          <li>Enrolla la toalla con la prenda dentro formando un cilindro y presiona suavemente para que absorba la mayor parte de la humedad.</li>
-        </ol>
-
-        <h3>4. Secado en plano: la clave para mantener la forma</h3>
-        <p><strong>Evita colgar una prenda de crochet mientras esté húmeda.</strong> El peso del agua puede estirar los puntos y deformar la silueta, especialmente en los hombros y el escote.</p>
-        <p>Déjala secar extendida en horizontal sobre una superficie plana y ventilada, alejada de la luz directa del sol y de fuentes de calor intenso, como radiadores.</p>
-
-        <h3>5. El proceso de <em>bloqueo (blocking)</em></h3>
-        <p>El bloqueo consiste en dar forma final al tejido mediante humedad y alfileres, respetando la composición de la fibra y las indicaciones de cuidado.</p>
-        <ul>
-          <li><strong>Ideal para:</strong> chales, grannys de ganchillo, calados y bordes que se enrollan.</li>
-          <li><strong>Cómo hacerlo:</strong> humedece la prenda, colócala sobre una superficie adecuada para bloquear (como una alfombrilla de goma EVA), fija los bordes con alfileres inoxidables siguiendo las medidas del patrón y déjala secar completamente antes de retirarlos.</li>
-        </ul>
-      </article>
+        <article class="blog-preview">
+          <h3>Guía definitiva para lavar, bloquear y cuidar tus prendas tejidas a crochet</h3>
+          <p>Conserva la forma y la textura de tus creaciones con consejos para lavarlas, retirar el exceso de agua, secarlas y bloquearlas.</p>
+          <a class="blog-read-more" href="blog/cuidar-prendas-crochet.html">Leer más</a>
+        </article>
+      </div>
     </section>
 
     <!-- SECCIÓN PREGUNTAS FRECUENTES -->

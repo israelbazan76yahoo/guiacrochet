@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo elegir el grosor de lana y el ganchillo ideal | GuíaCrochet</title>
+  <meta name="description" content="Aprende a elegir el grosor de lana y el ganchillo adecuado para cada proyecto de crochet, y descubre por qué hacer una muestra de tensión.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://guiacrochet.com/blog/elegir-grosor-lana-ganchillo.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #7c3aed;
+      --primary-hover: #6d28d9;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      padding: 0 0 2rem;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.7;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 64px;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 64px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .brand {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex: none;
+      color: var(--primary-color);
+      font-family: 'Nunito', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-decoration: none;
+    }
+    .brand-tooltip {
+      position: absolute;
+      top: calc(100% + 0.65rem);
+      left: 0;
+      z-index: 1100;
+      width: max-content;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+      color: var(--text-color);
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+    .brand:hover .brand-tooltip, .brand:focus-visible .brand-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+    .brand-yarn-icon {
+      width: 1.1em;
+      height: 1.1em;
+      flex: none;
+      color: #b7793e;
+    }
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header-links a {
+      color: var(--text-color);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .blog-back-link {
+      color: var(--text-color);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .header-links a:hover, .blog-back-link:hover, footer a:hover { color: var(--primary-hover); }
+    main {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      padding: clamp(1.25rem, 5vw, 2.5rem);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    @media (max-width: 520px) {
+      .header-container {
+        flex-wrap: wrap;
+        min-height: 64px;
+        padding: 0.5rem 0.75rem;
+        row-gap: 0.25rem;
+      }
+      .brand { flex: 1; }
+      .header-actions { display: contents; }
+      .header-links { display: contents; }
+      .header-links a, .blog-back-link { font-size: 0.82rem; }
+      .blog-back-link {
+        flex-basis: 100%;
+        text-align: right;
+      }
+    }
+    @media (max-width: 768px) {
+      .brand-tooltip { display: none; }
+    }
+    h1 { margin-bottom: 1rem; color: #1e1b4b; font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.2; }
+    h2 { margin: 1.75rem 0 0.5rem; color: var(--primary-color); font-size: 1.3rem; }
+    p, li { color: #334155; }
+    ul, ol { margin: 0.5rem 0 0 1.25rem; }
+    li { margin-bottom: 0.5rem; }
+    footer {
+      padding: 1.5rem 1rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    footer a { margin: 0 0.35rem; color: var(--primary-color); text-decoration: none; }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800113345128144"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="../index.html" class="brand" aria-label="GuiaCrochet - Ir al inicio" aria-describedby="brand-tooltip">
+        GuiaCrochet
+        <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+        </svg>
+        <span id="brand-tooltip" class="brand-tooltip" role="tooltip">Ir al inicio</span>
+      </a>
+      <div class="header-actions">
+        <nav class="header-links" aria-label="Navegación principal">
+          <a href="../legales/contacto.html">Contacto</a>
+        </nav>
+        <a class="blog-back-link" href="../index.html#blog">← Volver al blog</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <h1>Cómo elegir el grosor de lana y el ganchillo ideal: guía completa para principiantes</h1>
+      <p>Una de las dudas más frecuentes cuando empezamos en el mundo del crochet es saber qué hilo o lana utilizar y qué ganchillo corresponde a cada proyecto. Elegir el material adecuado no solo facilita el tejido: también ayuda a conseguir la caída, la textura y la firmeza deseadas en cada prenda o accesorio.</p>
+
+      <h2>1. Clasificación de los grosores de hilo (Standard Yarn Weight System)</h2>
+      <p>Los hilos se clasifican generalmente en categorías numeradas, desde los más finos hasta los más gruesos:</p>
+      <ul>
+        <li><strong>Categoría 0 - Encaje (Lace):</strong> hilos muy finos, utilizados para puntillas delicadas, chales de verano o trabajos en miniatura, como amigurumis pequeños.</li>
+        <li><strong>Categoría 1 - Superfino (Fingering / Sock):</strong> ideal para calcetines, ropa de bebé y prendas ligeras que requieren una puntada definida.</li>
+        <li><strong>Categoría 2 - Fino (Sport / Baby):</strong> un poco más grueso que el anterior; excelente para suéteres ligeros de niños y accesorios de primavera.</li>
+        <li><strong>Categoría 3 - Ligero (DK / Light Worsted):</strong> uno de los grosores más versátiles. Se utiliza mucho en mantas de bebé, amigurumis medianos y prendas de entretiempo.</li>
+        <li><strong>Categoría 4 - Mediano (Worsted / Aran):</strong> una opción muy popular para principiantes. Es fácil de tejer, permite avanzar rápido y funciona bien para bufandas, gorros y mantas.</li>
+        <li><strong>Categoría 5 - Grueso (Bulky / Chunky):</strong> perfecto para proyectos abrigados y rápidos, como cuellos, mantas gruesas de invierno y abrigos.</li>
+        <li><strong>Categorías 6 y 7 - Supergrueso y Jumbo (Super Bulky / Jumbo):</strong> hilos extragruesos, ideales para tejer con los dedos (<em>arm knitting</em>), hacer alfombras y crear cestos organizadores rígidos.</li>
+      </ul>
+
+      <h2>2. ¿Cómo saber qué ganchillo usar?</h2>
+      <p>Por lo general, la etiqueta de cada ovillo incluye una recomendación del fabricante con el tamaño de ganchillo, en milímetros, más adecuado para ese hilo.</p>
+      <ul>
+        <li><strong>Si usas un ganchillo más pequeño</strong> que el recomendado, las puntadas quedarán más apretadas y el tejido, más rígido; además, podrías consumir más material.</li>
+        <li><strong>Si usas un ganchillo más grande,</strong> el tejido quedará más suelto, con agujeros más grandes y una textura más blanda o elástica.</li>
+      </ul>
+
+      <h2>3. La importancia de la muestra de tensión</h2>
+      <p>Antes de empezar un proyecto grande, como un suéter o una manta, es muy recomendable tejer un pequeño cuadrado de prueba, por ejemplo, de 10 × 10 cm. Así podrás comprobar si la combinación de hilo, ganchillo y tensión personal coincide con las medidas indicadas en el patrón.</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 GuiaCrochet. Todos los derechos reservados.</p>
+    <p><a href="../legales/privacidad.html">Política de Privacidad</a> | <a href="../legales/terminos.html">Términos de Uso</a> | <a href="../legales/contacto.html">Contacto</a></p>
+  </footer>
+</body>
+</html>

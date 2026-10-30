@@ -31,4 +31,26 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Artículos del blog -->
+  <url>
+    <loc>https://guiacrochet.com/blog/elegir-grosor-lana-ganchillo.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://guiacrochet.com/blog/errores-comunes-crochet.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://guiacrochet.com/blog/cuidar-prendas-crochet.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

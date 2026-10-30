@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Términos de Uso | GuíaCrochet</title>
-  <meta name="description" content="Términos y condiciones de uso de GuíaCrochet. Reglas de uso de contenidos, propiedad intelectual y exención de responsabilidad.">
+  <title>Términos de Uso | GuiaCrochet</title>
+  <meta name="description" content="Términos y condiciones de uso de GuiaCrochet. Reglas de uso de contenidos, propiedad intelectual y exención de responsabilidad.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://guiacrochet.com/legales/terminos">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,13 @@
   <style>
     :root {
       --primary-color: #7c3aed;
+      --primary-hover: #6d28d9;
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
       --text-color: #1e293b;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
+      --header-height: 64px;
     }
 
     * {
@@ -38,18 +40,24 @@
     header {
       background-color: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
+      height: var(--header-height);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    nav {
-      max-width: 900px;
+    .header-container {
+      max-width: 1100px;
+      height: 100%;
       margin: 0 auto;
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .brand {
+      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -61,6 +69,36 @@
       text-decoration: none;
     }
 
+    .brand-tooltip {
+      position: absolute;
+      top: calc(100% + 0.65rem);
+      left: 0;
+      z-index: 1100;
+      width: max-content;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+      color: var(--text-color);
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+
+    .brand:hover .brand-tooltip,
+    .brand:focus-visible .brand-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     .brand-yarn-icon {
       width: 1.1em;
       height: 1.1em;
@@ -68,36 +106,31 @@
       flex: none;
     }
 
-    nav a {
+    .header-links a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .header-links a:hover {
+      color: var(--primary-color);
     }
 
     @media (max-width: 480px) {
-      header {
-        padding: 0.75rem 1rem;
-      }
+      .header-container { padding: 0 0.75rem; }
+      .header-links a { font-size: 0.82rem; }
+    }
 
-      nav {
-        flex-wrap: wrap;
-        row-gap: 0.35rem;
-      }
-
-      nav .brand {
-        flex: 1 1 100%;
-      }
-
-      nav > a:last-child {
-        margin-left: auto;
-        font-size: 0.9rem;
-      }
+    @media (max-width: 768px) {
+      .brand-tooltip { display: none; }
     }
 
     main {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 2rem 1rem;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 10px;
@@ -144,8 +177,10 @@
     }
 
     footer {
-      max-width: 900px;
+      max-width: 1100px;
+      width: 100%;
       margin: 2rem auto 0 auto;
+      padding: 0 1rem;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -155,45 +190,50 @@
       margin: 0 0.5rem;
     }
   </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9800113345128144"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 
   <header>
-    <nav>
-      <a href="../index.html" class="brand">
-        GuíaCrochet
+    <div class="header-container">
+      <a href="../index.html" class="brand" aria-label="GuiaCrochet - Ir al inicio" aria-describedby="brand-tooltip">
+        GuiaCrochet
         <svg class="brand-yarn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 3.5c4.7 0 8.5 3.6 8.5 8.2s-3.8 8.8-8.5 8.8-8.5-3.9-8.5-8.8S7.3 3.5 12 3.5Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/>
           <path d="M5.2 8.1c4.1 1 8.1 4.8 9.5 11.6M10.3 4c-.5 4.8 3.5 9.2 9.7 10.1M4.2 14.8c4.6-.7 8.4-4.1 10.3-9.9M8.2 20c1.4-4.2 5.2-7.5 11.4-8.1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
         </svg>
+        <span id="brand-tooltip" class="brand-tooltip" role="tooltip">Ir al inicio</span>
       </a>
-      <a href="../index.html">← Volver al Inicio</a>
-    </nav>
+      <nav class="header-links" aria-label="Navegación principal">
+        <a href="../index.html">← Volver al Inicio</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <h1>Términos de Uso</h1>
     <p class="last-updated">Última actualización: 6 de octubre de 2026</p>
 
-    <p>Bienvenido a <strong>GuíaCrochet</strong> (accesible desde <a href="https://guiacrochet.com">https://guiacrochet.com</a>). Al acceder y navegar por este sitio web, usted acepta cumplir con los siguientes Términos y Condiciones de Uso. Si no está de acuerdo con alguna parte de estos términos, le solicitamos abstenerse de utilizar el sitio.</p>
+    <p>Bienvenido a <strong>GuiaCrochet</strong> (accesible desde <a href="https://guiacrochet.com">https://guiacrochet.com</a>). Al acceder y navegar por este sitio web, usted acepta cumplir con los siguientes Términos y Condiciones de Uso. Si no está de acuerdo con alguna parte de estos términos, le solicitamos abstenerse de utilizar el sitio.</p>
 
     <h2>1. Uso del Contenido e Información</h2>
-    <p>El contenido publicado en GuíaCrochet tiene fines estrictamente informativos, educativos y de entretenimiento. Si bien nos esforzamos por garantizar que las explicaciones, diagramas y tablas de equivalencias sean precisos, no garantizamos la exactitud absoluta ni la idoneidad de las instrucciones para todos los proyectos o materiales particulares.</p>
+    <p>El contenido publicado en GuiaCrochet tiene fines estrictamente informativos, educativos y de entretenimiento. Si bien nos esforzamos por garantizar que las explicaciones, diagramas y tablas de equivalencias sean precisos, no garantizamos la exactitud absoluta ni la idoneidad de las instrucciones para todos los proyectos o materiales particulares.</p>
 
     <h2>2. Propiedad Intelectual</h2>
-    <p>A menos que se indique lo contrario, todos los textos, diseños, guías paso a paso, código de la plataforma y estructura organizativa de GuíaCrochet son propiedad intelectual de este sitio web. Se autoriza la lectura, descarga puntual e impresión de contenido únicamente para uso personal y no comercial.</p>
+    <p>A menos que se indique lo contrario, todos los textos, diseños, guías paso a paso, código de la plataforma y estructura organizativa de GuiaCrochet son propiedad intelectual de este sitio web. Se autoriza la lectura, descarga puntual e impresión de contenido únicamente para uso personal y no comercial.</p>
     <p>Queda estrictamente prohibido:</p>
     <ul>
       <li>Reproducir, republicar o redistribuir masivamente el contenido escrito sin autorización previa.</li>
-      <li>Vender, alquilar o sublicenciar material extraído de GuíaCrochet.</li>
+      <li>Vender, alquilar o sublicenciar material extraído de GuiaCrochet.</li>
       <li>Realizar técnicas de raspado de datos (<em>data scraping</em>) o extracción automatizada sobre el sitio.</li>
     </ul>
 
     <h2>3. Enlaces a Sitios de Terceros</h2>
-    <p>Nuestro sitio web puede contener enlaces a páginas web de terceros, proveedores o anunciantes. Estos enlaces se proporcionan únicamente para su conveniencia. GuíaCrochet no ejerce ningún tipo de control sobre el contenido, políticas de privacidad o prácticas de dichos sitios externos y no asume responsabilidad alguna por ellos.</p>
+    <p>Nuestro sitio web puede contener enlaces a páginas web de terceros, proveedores o anunciantes. Estos enlaces se proporcionan únicamente para su conveniencia. GuiaCrochet no ejerce ningún tipo de control sobre el contenido, políticas de privacidad o prácticas de dichos sitios externos y no asume responsabilidad alguna por ellos.</p>
 
     <h2>4. Limitación de Responsabilidad</h2>
-    <p>En ningún caso GuíaCrochet o sus administradores serán responsables por pérdidas, daños indirectos, incidentales o de cualquier tipo derivados del uso del sitio web, la imposibilidad de acceso o la confianza depositada en la información o herramientas proporcionadas en esta plataforma.</p>
+    <p>En ningún caso GuiaCrochet o sus administradores serán responsables por pérdidas, daños indirectos, incidentales o de cualquier tipo derivados del uso del sitio web, la imposibilidad de acceso o la confianza depositada en la información o herramientas proporcionadas en esta plataforma.</p>
 
     <h2>5. Modificaciones de los Términos</h2>
     <p>Nos reservamos el derecho de actualizar o modificar estos Términos de Uso en cualquier momento y sin previo aviso. Es responsabilidad del usuario revisar periódicamente esta página para estar al tanto de los cambios.</p>
@@ -203,7 +243,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 GuíaCrochet. Todos los derechos reservados.</p>
+    <p>&copy; 2026 GuiaCrochet. Todos los derechos reservados.</p>
     <p>
       <a href="../index.html">Inicio</a> | 
       <a href="privacidad.html">Política de Privacidad</a> | 
