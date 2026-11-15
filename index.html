@@ -559,8 +559,13 @@
 
     /* Establecemos el orden de visualización de cada elemento interno */
     .stitch-card .stitch-diagram,
+    .stitch-card picture,
     .stitch-card img {
       order: 1; /* Diagrama o imagen primero */
+    }
+
+    .stitch-card picture {
+      width: 100%;
     }
 
     .stitch-card h3 {
@@ -1258,6 +1263,15 @@
       object-fit: contain;
       border-radius: 8px;
     }
+    @media (min-width: 769px) {
+      #image-modal .modal-content {
+        max-width: 900px;
+      }
+      #image-modal .modal-img-container img {
+        width: 570px;
+        max-width: 100%;
+      }
+    }
     .btn-video {
       background: #f3e8ff;
       color: #7c3aed;
@@ -1951,7 +1965,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Eslabones de Cadeneta</span>
           </div>
-          <img src="assets/img/puntos/punto-cadeneta.png" alt="Ejemplo de tejido en Punto Cadeneta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Cadeneta (cad)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-cadeneta.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-cadeneta.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-cadeneta.png" alt="Ejemplo de tejido en Punto Cadeneta" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Cadeneta (cad)')">
+          </picture>
           <h3>Punto Cadeneta (cad)</h3>
           <p>Es la base sobre la que se teje prácticamente cualquier proyecto a crochet. Forma el cordón inicial de montado.</p>
           <ul>
@@ -1982,7 +2000,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Desplazamiento Superficial</span>
           </div>
-          <img src="assets/img/puntos/punto-enano.png" alt="Ejemplo de tejido en Punto Enano / Deslizado" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Enano / Deslizado (pe)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-enano.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-enano.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-enano.png" alt="Ejemplo de tejido en Punto Enano / Deslizado" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Enano / Deslizado (pe)')">
+          </picture>
           <h3>Punto Enano / Deslizado (pe)</h3>
           <p>Un punto invisible de mínima altura utilizado para unir vueltas en redondo o desplazar la aguja sin añadir volumen.</p>
           <ul>
@@ -2015,7 +2037,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Inserción y Altura Baja</span>
           </div>
-          <img src="assets/img/puntos/punto-bajo-medio-punto.png" alt="Ejemplo de tejido en Punto Bajo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Bajo / Medio Punto (pb)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-bajo-medio-punto.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-bajo-medio-punto.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-bajo-medio-punto.png" alt="Ejemplo de tejido en Punto Bajo" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Bajo / Medio Punto (pb)')">
+          </picture>
           <h3>Punto Bajo / Medio Punto (pb)</h3>
           <p>Crea un tejido compacto, firme y resistente. Es la técnica por excelencia para la elaboración de juguetes amigurumi.</p>
           <ul>
@@ -2047,7 +2073,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Lazada y Altura Media (T)</span>
           </div>
-          <img src="assets/img/puntos/punto-medio-punto-alto-media-vareta.png" alt="Ejemplo de tejido en Medio Punto Alto / Media Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Medio Punto Alto / Media Vareta (mpa)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-medio-punto-alto-media-vareta.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-medio-punto-alto-media-vareta.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-medio-punto-alto-media-vareta.png" alt="Ejemplo de tejido en Medio Punto Alto / Media Vareta" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Medio Punto Alto / Media Vareta (mpa)')">
+          </picture>
           <h3>Medio Punto Alto / Media Vareta (mpa)</h3>
           <p>Ofrece un equilibrio idóneo entre densidad y flexibilidad, con una altura media entre el punto bajo y el alto.</p>
           <ul>
@@ -2079,7 +2109,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Postes Altos con Barra (𝚻)</span>
           </div>
-          <img src="assets/img/puntos/punto-alto-vareta.png" alt="Ejemplo de tejido en Punto Alto / Vareta" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto / Vareta (pa)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-alto-vareta.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-alto-vareta.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-alto-vareta.png" alt="Ejemplo de tejido en Punto Alto / Vareta" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Alto / Vareta (pa)')">
+          </picture>
           <h3>Punto Alto / Vareta (pa)</h3>
           <p>Tiene el doble de altura que el punto bajo. Permite tejer rápido creando telas suaves con buena caída.</p>
           <ul>
@@ -2114,7 +2148,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Arcos y Malla de Cadenetas</span>
           </div>
-          <img src="assets/img/puntos/punto-red-malla-cadenetas.png" alt="Ejemplo de tejido en Punto Red o Malla de Cadenetas" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Red o Malla de Cadenetas')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-red-malla-cadenetas.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-red-malla-cadenetas.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-red-malla-cadenetas.png" alt="Ejemplo de tejido en Punto Red o Malla de Cadenetas" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Red o Malla de Cadenetas')">
+          </picture>
           <h3>Punto Red o Malla de Cadenetas</h3>
           <p>Formado por arcos de cadeneta fijados con puntos bajos. Genera un entramado flexible y muy aireado.</p>
           <ul>
@@ -2143,7 +2181,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Bucles Alargados de Nudo</span>
           </div>
-          <img src="assets/img/puntos/punto-salomon-nudo-de-amor.png" alt="Ejemplo de tejido en Punto Salomón / Nudo de Amor" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Salomón / Nudo de Amor')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-salomon-nudo-de-amor.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-salomon-nudo-de-amor.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-salomon-nudo-de-amor.png" alt="Ejemplo de tejido en Punto Salomón / Nudo de Amor" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Salomón / Nudo de Amor')">
+          </picture>
           <h3>Punto Salomón / Nudo de Amor</h3>
           <p>Formado por bucles alargados retenidos por un punto bajo. Produce un encaje ligero y etéreo con muy poco hilo.</p>
           <ul>
@@ -2174,7 +2216,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Varetas Convergentes (Abanico)</span>
           </div>
-          <img src="assets/img/puntos/punto-abanico-concha.png" alt="Ejemplo de tejido en Punto Abanico o Concha" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Abanico o Concha (Shell Stitch)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-abanico-concha.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-abanico-concha.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-abanico-concha.png" alt="Ejemplo de tejido en Punto Abanico o Concha" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Abanico o Concha (Shell Stitch)')">
+          </picture>
           <h3>Punto Abanico o Concha (Shell Stitch)</h3>
           <p>Múltiples puntos altos tejidos en un mismo punto base que se abren formando ondas semicirculares.</p>
           <ul>
@@ -2206,7 +2252,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Estructura 1pa + 1cad + 1pa</span>
           </div>
-          <img src="assets/img/puntos/punto-v-stitch.png" alt="Ejemplo de tejido en Punto V (V-Stitch)" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto V (V-Stitch)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-v-stitch.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-v-stitch.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-v-stitch.png" alt="Ejemplo de tejido en Punto V (V-Stitch)" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto V (V-Stitch)')">
+          </picture>
           <h3>Punto V (V-Stitch)</h3>
           <p>Estructura repetitiva de <code>1 pa + 1 cad + 1 pa</code> en el mismo espacio. Aporta dinamismo visual y avance veloz.</p>
           <ul>
@@ -2242,7 +2292,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Envolvente Alrededor del Poste</span>
           </div>
-          <img src="assets/img/puntos/punto-alto-en-relieve.png" alt="Ejemplo de tejido en Punto Alto en Relieve" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Alto en Relieve')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-alto-en-relieve.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-alto-en-relieve.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-alto-en-relieve.png" alt="Ejemplo de tejido en Punto Alto en Relieve" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Alto en Relieve')">
+          </picture>
           <h3>Punto Alto en Relieve (Por Delante / Por Detrás)</h3>
           <p>Se teje rodeando el poste del punto anterior en lugar de la hebra superior, creando lomos sobresalientes.</p>
           <ul>
@@ -2272,7 +2326,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: 5 Varetas Unidas en Relieve 3D</span>
           </div>
-          <img src="assets/img/puntos/punto-palomita-pochoclo.png" alt="Ejemplo de tejido en Punto Palomita / Pochoclo" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Palomita / Pochoclo (Popcorn Stitch)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-palomita-pochoclo.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-palomita-pochoclo.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-palomita-pochoclo.png" alt="Ejemplo de tejido en Punto Palomita / Pochoclo" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Palomita / Pochoclo (Popcorn Stitch)')">
+          </picture>
           <h3>Punto Palomita / Pochoclo (Popcorn Stitch)</h3>
           <p>Agrupación de 4 a 5 varetas en la misma base unidas por el primer y último punto para crear un relieve abultado.</p>
           <ul>
@@ -2301,7 +2359,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Celdas Cuadradas Profundas</span>
           </div>
-          <img src="assets/img/puntos/punto-waffle.png" alt="Ejemplo de tejido en Punto Waffle / Panal de Abeja" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Waffle / Panal de Abeja')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-waffle.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-waffle.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-waffle.png" alt="Ejemplo de tejido en Punto Waffle / Panal de Abeja" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Waffle / Panal de Abeja')">
+          </picture>
           <h3>Punto Waffle / Panal de Abeja</h3>
           <p>Combinación de varetas normales y varetas en relieve por delante que generan celdas cuadradas profundas.</p>
           <ul>
@@ -2331,7 +2393,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Lazadas Retenidas Esponjosas</span>
           </div>
-          <img src="assets/img/puntos/punto-garbanzo.png" alt="Ejemplo de tejido en Punto Garbanzo / Puff Stitch" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Garbanzo / Puff Stitch')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-garbanzo.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-garbanzo.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-garbanzo.png" alt="Ejemplo de tejido en Punto Garbanzo / Puff Stitch" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Garbanzo / Puff Stitch')">
+          </picture>
           <h3>Punto Garbanzo / Puff Stitch</h3>
           <p>Múltiples lazadas retenidas en la aguja que se cierran juntas. Crea una textura suave y esponjosa.</p>
           <ul>
@@ -2367,7 +2433,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Pétalos Estrellados 3D</span>
           </div>
-          <img src="assets/img/puntos/punto-jazmin.png" alt="Ejemplo de tejido en Punto Jazmín o Estrella" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Jazmín o Estrella (Jasmine Stitch)')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-jazmin.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-jazmin.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-jazmin.png" alt="Ejemplo de tejido en Punto Jazmín o Estrella" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Jazmín o Estrella (Jasmine Stitch)')">
+          </picture>
           <h3>Punto Jazmín o Estrella (Jasmine Stitch)</h3>
           <p>Un entramado botánico tridimensional formado por pétalos de lazadas retenidas que convergen en un centro.</p>
           <ul>
@@ -2396,7 +2466,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Entrecruce en Diagonal</span>
           </div>
-          <img src="assets/img/puntos/punto-espiga.png" alt="Ejemplo de tejido en Punto Espiga / Herringbone" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Espiga / Herringbone')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-espiga.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-espiga.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-espiga.png" alt="Ejemplo de tejido en Punto Espiga / Herringbone" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Espiga / Herringbone')">
+          </picture>
           <h3>Punto Espiga / Herringbone</h3>
           <p>Variación del medio punto alto con inclinación diagonal que imita el tejido en espina de pescado.</p>
           <ul>
@@ -2423,7 +2497,11 @@
             </svg>
             <span class="diagram-caption">Diagrama: Picos y Valles Simétricos</span>
           </div>
-          <img src="assets/img/puntos/punto-chevron-zig-zag.png" alt="Ejemplo de tejido en Punto Chevron o Zig-Zag" loading="lazy" onclick="abrirModalImagen(this.src, 'Punto Chevron o Zig-Zag')">
+          <picture>
+            <source srcset="assets/img/puntos/punto-chevron-zig-zag.avif" type="image/avif">
+            <source srcset="assets/img/puntos/punto-chevron-zig-zag.webp" type="image/webp">
+            <img src="assets/img/puntos/punto-chevron-zig-zag.png" alt="Ejemplo de tejido en Punto Chevron o Zig-Zag" loading="lazy" onclick="abrirModalImagen(this.currentSrc, 'Punto Chevron o Zig-Zag')">
+          </picture>
           <h3>Punto Chevron o Zig-Zag</h3>
           <p>Estructura en picos y valles lograda combinando aumentos y disminuciones continuas de forma simétrica.</p>
           <ul>
